@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120922172959) do
+ActiveRecord::Schema.define(:version => 20120922194004) do
+
+  create_table "product_colors", :force => true do |t|
+    t.string   "name"
+    t.string   "desc"
+    t.integer  "product_type_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "product_colors", ["product_type_id"], :name => "index_product_colors_on_product_type_id"
 
   create_table "product_types", :force => true do |t|
     t.string   "name"
