@@ -7,8 +7,8 @@ gem "bundler", "~> 1.2.0.rc.2"
 gem 'thin'
 gem 'bcrypt-ruby', '~> 3.0.0'
 
-gem 'haml'
-gem 'sass'
+gem 'haml-rails'
+gem 'sass-rails'
 gem 'jquery-rails'
 gem 'coffee-rails', '~> 3.2.1'
 

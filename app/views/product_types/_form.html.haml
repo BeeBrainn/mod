@@ -1,0 +1,18 @@
+= form_for @product_type do |f|
+  -if @product_type.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@product_type.errors.count, "error")} prohibited this product_type from being saved:"
+      %ul
+        - @product_type.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.hidden_field :product_id
+  .field
+    = f.label :name
+    = f.text_field :name, size: "50"
+  .field
+    = f.label :desc
+    = f.text_area :desc, size: "50x5"
+  .action
+    = f.submit 'Save'
