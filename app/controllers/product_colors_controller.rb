@@ -14,6 +14,8 @@ class ProductColorsController < ApplicationController
   # GET /product_colors/1.json
   def show
     @product_color = ProductColor.find(params[:id])
+    @product_size = ProductSize.new( :product_color => @product_color )
+    @product_sizes = ProductSize.find_all_by_product_color_id(@product_color.id)
 
     respond_to do |format|
       format.html # show.html.erb

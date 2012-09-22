@@ -1,4 +1,6 @@
 Modern::Application.routes.draw do
+  resources :product_sizes
+
   resources :product_colors
 
   resources :product_types
