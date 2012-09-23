@@ -1,11 +1,13 @@
 Modern::Application.routes.draw do
+  root to: "pages#home"
+
+  match "/products" => "products#index"
+
   resources :product_sizes
 
   resources :product_colors
 
   resources :product_types
-
-  root to: "products#index"
   
   resources :products
 
