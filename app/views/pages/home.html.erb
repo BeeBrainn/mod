@@ -1,39 +1,20 @@
 <h1>Редактирование элементов склада</h1>
+
 <% @products.each do |product| %>
-  <h2><%= product.name %></h2>
-  <table class = "product_types_table">
-    <tr>
-      <td rowspan = "2">Тип</td>
-      <td rowspan = "2">Цвет</td>
-      <td colspan = "9">Размер</td>
-    </tr>
-    <tr>
+  <%= product.name %><br>
+  <div class="hide"><%= @product_types = ProductType.find_all_by_product_id(product.id) %></div>
+
+  <% @product_types.each do |product_type| %>
+    &nbsp;&nbsp;<%= product_type.name %><br>
+    <div class="hide"><%= @product_colors = ProductColor.find_all_by_product_type_id(product_type.id) %></div>
+    
+    <% @product_colors.each do |product_color| %>
+      &nbsp;&nbsp;&nbsp;&nbsp;<%= product_color.name %><br>
+      <div class="hide"><%= @product_sizes = ProductSize.find_all_by_product_color_id(product_color.id) %></div>
+
       <% @product_sizes.each do |product_size| %>
-        <td> <%= product_size.name %> </td>
-      <% end %>  
-    </tr>
-
-
-    <tr>
-      <% @product_types.each do |product_type|%>
-        <% if product_type.product_id == product.id %>
-          <tr>
-            <td rowspan = "3"> <%= product_type.name%> </td>
-            <td colspan = "10"></td>
-          </tr>
-            <% @product_colors.each do |product_color| %>
-              <% if product_color.product_type_id == product_type.id %>
-                <tr> <td> <%= product_color.name %> </td>
-              <% @product_sizes.each do |product_size| %>
-                <% if product_size.product_color_id == product_color.id %>
-                  <td> <%= product_size.price %> </td>
-                <% end %>
-              <% end %>
-                </tr>
-              <% end %>
-            <% end %>
-        <% end %>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= product_size.name %>: price = <%= product_size.price %>; count = <%= product_size.count %><br>   
       <% end %>
-    </tr>  
-  </table>
+    <% end %>
+  <% end %>
 <% end %>
