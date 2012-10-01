@@ -1,5 +1,9 @@
 %p#notice= notice
 
+- @product_types.each do |product_type|
+	= link_to product_type.name, product_type
+%hr{color: "green"}
+
 %p
 	%b Product:
 	= @product.name

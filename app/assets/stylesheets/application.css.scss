@@ -12,7 +12,72 @@
  *= require_tree .
  */
 
+body {
+	border-collapse: collapse;
+	margin: 0;
+	padding: 0;
+}
+
+#header {
+	font-family: Sans;
+	font-size: 48px;
+	font-weight: bolder;
+	padding: 15px;
+}
 #nav {
-	padding: 20px 0px;
-	border-bottom: 5px solid grey;
+	padding: 20px 20px;
+	border-bottom: 13px solid grey;
+
+	a {
+		color: white;
+		display: inline-block;
+		padding: 5px 0px;
+		width: 80px;
+		text-align: center;
+		background-color: grey;
+		border-top-right-radius: 10px;
+	}
+}
+
+#left_main_column {
+	width: 20%;
+	float: left;
+	padding: 2%;
+}
+
+#left_main_menu {
+	width: 80%;
+	border: 2px solid grey;
+	border-top-right-radius: 20px;
+	padding: 5%;
+
+	a {
+		color: white;
+		display: block;
+		padding: 10px 0px;
+		text-align: center;
+		margin-top: 10px;
+		background-color: darkcyan;
+		border-top-right-radius: 15px;
+	}
+}
+
+#content {
+	width: 72%;
+	float: right;
+	padding: 2%;
+}
+
+.clear {
+	clear: both;
+}
+
+/*------------------ cart -------------------*/
+
+#cart {
+	width: 80%;
+	border: 2px solid grey;
+	border-top-right-radius: 20px;
+	padding: 5%;
+	margin-bottom: 10px;	
 }

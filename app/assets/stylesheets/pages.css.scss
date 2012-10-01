@@ -6,14 +6,30 @@
   display: none;
 }
 
-table {
-  border: 1px solid green;
+.table_product {
+  border: 3px solid grey;
 }
 
-.product_colors_table {
-  border: 1px solid red;
+.table_product_type {
+  border: 1px dotted grey;
 }
 
-.product_sizes_table {
-  border: 1px solid blue;
+.table_product_size {
+  border: 1px solid grey;
+}
+
+.td_product_price {
+  border: 2px solid royalblue;
+  width: 50px;
+}
+
+.td_product_count {
+  border: 2px solid darkcyan;
+  width: 50px;
+}
+
+.td_product_reserv {
+  border: 1px dotted red;
+  padding: 1px;
+  width: 50px;
 }

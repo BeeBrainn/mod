@@ -6,8 +6,22 @@
 		= javascript_include_tag "application"
 		= csrf_meta_tags
 	%body
+		#header Modern Import
 		#nav
-			= link_to "Home", "/"
-			= link_to "Products", "/products"
-		= yield
+			= link_to "Главная", "/"
+			= link_to "Склад", "/products"
+			= link_to "Контакты", "/contact"
+			= link_to "Админ", "/adminpage"
+		#left_main_column
+			#cart
+				%h6 Привет, корзина
+			#left_main_menu
+				= link_to "Футболки", "/products/1"
+				= link_to "Рубашки поло", "/products/3"
+				= link_to "Бейсболки", "/products/2"
+				= link_to "Байки", "/products/4"
+				= link_to "Еще футболки", "/products/5"
+		#content
+			= yield
+		.clear
 		%footer#footer

@@ -2,13 +2,12 @@ Modern::Application.routes.draw do
   root to: "pages#home"
 
   match "/products" => "products#index"
+  match "/contact" => "pages#contact"
+  match "/adminpage" => "pages#adminpage"
 
   resources :product_sizes
-
   resources :product_colors
-
   resources :product_types
-  
   resources :products
 
   # The priority is based upon order of creation:

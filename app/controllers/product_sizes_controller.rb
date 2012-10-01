@@ -61,6 +61,7 @@ class ProductSizesController < ApplicationController
     respond_to do |format|
       if @product_size.update_attributes(params[:product_size])
         format.html { redirect_to @product_size, notice: 'Product size was successfully updated.' }
+        format.js
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

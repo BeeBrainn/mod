@@ -1,5 +1,9 @@
 %p#notice= notice
 
+- @product_sizes.each do |product_size|
+  = link_to product_size.name, product_size
+%hr{color: "green"}
+
 %p
   %b Product Color:
   = @product_color.name
