@@ -1,4 +1,5 @@
 class ProductTypesController < ApplicationController
+  skip_before_filter :authorize, :admin_check
   # GET /product_types
   # GET /product_types.json
   def index

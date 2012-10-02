@@ -1,0 +1,12 @@
+= form_for @user_group do |f|
+  .field
+    = f.label "Имя группы:" 
+    = f.text_field :name
+  .field
+    = f.label "Минимальный заказ:"
+    = f.number_field :least_order
+  .field
+    = f.label "Admin"
+    = f.check_box :admin_flag
+  .actions
+    = f.submit 'Save'

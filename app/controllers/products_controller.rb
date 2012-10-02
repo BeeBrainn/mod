@@ -1,4 +1,8 @@
 class ProductsController < ApplicationController
+
+#<%=button_to "Change", root_path(id: product_size.id, price: '666'), action: 'update', method: :put, remote: true %>
+
+  skip_before_filter :authorize, :admin_check
   # GET /products
   # GET /products.json
   def index

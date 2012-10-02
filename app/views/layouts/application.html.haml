@@ -12,6 +12,23 @@
 			= link_to "Склад", "/products"
 			= link_to "Контакты", "/contact"
 			= link_to "Админ", "/adminpage"
+			%br
+			%br
+			%br
+			- if @current_user
+				%p 
+					Logged in as 
+					= @current_user.name
+				%p
+					Last time in
+					= @current_user.updated_at.to_date
+				= link_to "Log out", logout_path, method: :delete
+			- else
+				= link_to "Sign up", "/register"
+				or
+				= link_to "log in", login_path
+			- flash.each do |name, msg|
+				= content_tag :div, msg, :id => "flash_#{name}"
 		#left_main_column
 			#cart
 				%h6 Привет, корзина

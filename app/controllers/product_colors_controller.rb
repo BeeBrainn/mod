@@ -1,4 +1,5 @@
 class ProductColorsController < ApplicationController
+  skip_before_filter :authorize, :admin_check
   # GET /product_colors
   # GET /product_colors.json
   def index

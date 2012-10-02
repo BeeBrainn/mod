@@ -4,4 +4,5 @@
 
 $ ->
 	$(".input_edit_product_price").keypress((e)->
-			$.post("/", {id: "0", str2: "666"}) if e.which==13)
+			$.post("/", {id: "0", str2: "666"})
+			console.log("Enter pressed") if e.which==13)

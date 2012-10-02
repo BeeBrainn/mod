@@ -1,4 +1,5 @@
 class ProductSizesController < ApplicationController
+  skip_before_filter :authorize, :admin_check
   # GET /product_sizes
   # GET /product_sizes.json
   def index

@@ -11,7 +11,31 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120923010936) do
+ActiveRecord::Schema.define(:version => 20121001084654) do
+
+  create_table "organizations", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "type_of_ownership"
+    t.string   "company_name"
+    t.string   "unp"
+    t.string   "juridical_address"
+    t.string   "mailing_address"
+    t.string   "contact_name"
+    t.string   "phone_number_0"
+    t.string   "phone_number_1"
+    t.string   "phone_number_2"
+    t.string   "phone_number_3"
+    t.string   "phone_number_4"
+    t.string   "phone_number_5"
+    t.string   "phone_number_6"
+    t.string   "phone_number_7"
+    t.string   "phone_number_8"
+    t.string   "phone_number_9"
+    t.string   "email"
+    t.string   "work_time"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
 
   create_table "product_colors", :force => true do |t|
     t.string   "name"
@@ -50,6 +74,28 @@ ActiveRecord::Schema.define(:version => 20120923010936) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "user_groups", :force => true do |t|
+    t.string   "name"
+    t.integer  "least_order",      :default => 5
+    t.boolean  "admin_flag",       :default => false
+    t.boolean  "view_reserv_flag", :default => false
+    t.boolean  "view_sklad_flag",  :default => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.integer  "total_amount",      :default => 0
+    t.boolean  "edit_data_flag",    :default => true
+    t.boolean  "reg_confirm_admin", :default => false
+    t.integer  "user_group_id",     :default => 1
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
   end
 
 end

@@ -1,4 +1,3 @@
-<h2>+<%= @hi %></h2>
 <% @products.each do |product| %>
   <h2><%= product.name %></h2>
   <div class="hide"><%= @product_types = ProductType.find_all_by_product_id(product.id) %></div>
@@ -23,7 +22,6 @@
         <td class="td_product_price">
           <div class="edit_product_price"> 
             <%=text_field_tag "product_size.id", product_size.price, {size: "6", class: "input_edit_product_price"} %>
-            <%=button_to "Change", root_path(id: product_size.id, price: '666'), action: 'update', method: :put, remote: true %>
           </div>
         </td>
       <% end %>
