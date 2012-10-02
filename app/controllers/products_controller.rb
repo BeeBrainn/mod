@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
 
-#<%=button_to "Change", root_path(id: product_size.id, price: '666'), action: 'update', method: :put, remote: true %>
+#<%=text_field_tag product_size.id, product_size.price, {size: "6", class: "input_edit_product_price"} %>
+#<%=button_to "Change", "/products/1", data: { id: product_size.id, price: "666" }, action: 'update', method: :put, remote: true %>
 
   skip_before_filter :authorize, :admin_check
   # GET /products

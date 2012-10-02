@@ -57,12 +57,16 @@ class ProductSizesController < ApplicationController
   # PUT /product_sizes/1
   # PUT /product_sizes/1.json
   def update
+    @products = Product.all
     @product_size = ProductSize.find(params[:id])
-
+    if params[:product_size][:count]
+      @new_count = @product_size.count + params[:product_size][:count].to_i
+      params.update(:product_size=>{:count => @new_count})
+    end
     respond_to do |format|
       if @product_size.update_attributes(params[:product_size])
         format.html { redirect_to @product_size, notice: 'Product size was successfully updated.' }
-        format.js
+        format.js { @current_product_size_id = 1}
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

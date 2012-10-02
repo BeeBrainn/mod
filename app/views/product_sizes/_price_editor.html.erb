@@ -20,11 +20,7 @@
       <tr>
       <% @product_sizes.each do |product_size| %>
         <td class="td_product_price">
-        <% if product_size.id == @current_product_size_id %>
-          <div class="edit_product_price" id="current_product_size"> 
-        <% else %>
           <div class="edit_product_price"> 
-        <% end %>
             <%= form_for product_size, remote: true do |f| %>
               <%= f.hidden_field :product_color_id %>
               <%= f.text_field :price, size: "6" %>

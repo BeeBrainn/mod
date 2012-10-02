@@ -3,6 +3,9 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
-	$(".input_edit_product_price").keypress((e)->
-			$.post("/", {id: "0", str2: "666"})
-			console.log("Enter pressed") if e.which==13)
+	$("input").keypress((e)->
+		console.log("Enter pressed") if e.which==13)
+
+#		this.parent.submit 		
+# $.put("/products", {id: $(".input_edit_product_price").name , price: $(".input_edit_product_price").value})
+# console.log("Enter pressed")

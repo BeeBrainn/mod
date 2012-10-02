@@ -2,7 +2,6 @@ Modern::Application.routes.draw do
   
   root to: "pages#home"
 
-  match "/products" => "products#index"
   match "/contact" => "pages#contact"
   match "/adminpage" => "pages#adminpage"
   match "/register" => "users#new"
