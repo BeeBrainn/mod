@@ -7,6 +7,7 @@ gem "bundler", "~> 1.2.0.rc.2"
 gem 'thin'
 gem 'bcrypt-ruby', '~> 3.0.0'
 
+gem 'uglifier'
 gem 'haml-rails'
 gem 'sass-rails'
 gem 'jquery-rails'
