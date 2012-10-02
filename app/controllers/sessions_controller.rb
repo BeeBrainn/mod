@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
   	user = User.find_by_email(params[:email])
   	if user and user.authenticate(params[:password])
   		session[:user_id] = user.id
-  		redirect_to edit_user_path(user)
+  		redirect_to "/", alert: "Hello #{user.name}"
   	else
   		redirect_to '/login', alert: "Wrong email or pass"
   	end
