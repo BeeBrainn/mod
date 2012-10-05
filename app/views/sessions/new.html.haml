@@ -4,10 +4,10 @@
 = form_tag do
 	%fieldset
 		%div
-			= label_tag :email, 'email:'
+			= label_tag :email, 'e-mail:'
 			= text_field_tag :email, params[:email]
 		%div
-			= label_tag :password, 'pass:'
+			= label_tag :password, 'пароль:'
 			= password_field_tag :password, params[:password]
 		%div
-			= submit_tag "Login"
+			= submit_tag "Войти"

@@ -1,9 +1,11 @@
 Modern::Application.routes.draw do
   
   root to: "pages#home"
-
+  
+  match "/convertsizes" => "pages#convertsizes"
+  match "/scheme" => "pages#scheme"
+  match "/about" => "pages#about"
   match "/contact" => "pages#contact"
-  match "/adminpage" => "pages#adminpage"
   match "/register" => "users#new"
 
   controller :sessions do

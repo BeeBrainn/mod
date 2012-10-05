@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
-  skip_before_filter :authorize, :admin_check, only: [:new, :create]
+  before_filter :admin_check
+  skip_before_filter :authorize, only:[:new, :create]
+  skip_before_filter :admin_check, only:[:new, :create, :show, :edit]
   # GET /users
   # GET /users.json
   def index
@@ -15,6 +17,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
+    @organizations = Organization.find_all_by_user_id(@current_user.id)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -36,6 +39,8 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
+    @organization = Organization.new(:user => @current_user)
+    @organizations = Organization.find_all_by_user_id(@current_user.id)
   end
 
   # POST /users

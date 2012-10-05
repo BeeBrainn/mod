@@ -1,5 +1,5 @@
 class UserGroupsController < ApplicationController
-  skip_before_filter :authorize, :admin_check
+  before_filter :admin_check
   # GET /user_groups
   # GET /user_groups.json
   def index

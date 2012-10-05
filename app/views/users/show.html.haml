@@ -1,3 +1,16 @@
 %p#notice= notice
-= @user.name
-= link_to 'Edit', edit_user_path(@user)
+%h4
+  Личный кабинет
+  =@user.name
+%h6= link_to 'Редактировать', edit_user_path(@user)
+%table
+  %tr
+    %td email:
+    %td= mail_to @user.email
+  %tr
+    %td Последний раз на сайте:
+    %td= @user.updated_at.to_date
+%hr{color: "green"}
+%h5 Организации пользавателя:
+#user_organizations
+  = render '/organizations/showform'

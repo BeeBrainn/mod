@@ -1,5 +1,5 @@
 class OrganizationsController < ApplicationController
-  skip_before_filter :authorize, :admin_check
+  #before_filter :admin_check
   # GET /organizations
   # GET /organizations.json
   def index
@@ -45,7 +45,7 @@ class OrganizationsController < ApplicationController
 
     respond_to do |format|
       if @organization.save
-        format.html { redirect_to @organization, notice: 'Organization was successfully created.' }
+        format.html { redirect_to @current_user, notice: 'Organization was successfully created.' }
         format.json { render json: @organization, status: :created, location: @organization }
       else
         format.html { render action: "new" }
@@ -61,7 +61,7 @@ class OrganizationsController < ApplicationController
 
     respond_to do |format|
       if @organization.update_attributes(params[:organization])
-        format.html { redirect_to @organization, notice: 'Organization was successfully updated.' }
+        format.html { redirect_to @current_user, notice: 'Organization was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -77,7 +77,7 @@ class OrganizationsController < ApplicationController
     @organization.destroy
 
     respond_to do |format|
-      format.html { redirect_to organizations_url }
+      format.html { redirect_to @current_user }
       format.json { head :no_content }
     end
   end

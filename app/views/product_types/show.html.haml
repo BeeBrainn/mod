@@ -3,31 +3,32 @@
 - @product_colors.each do |product_color|
   = link_to product_color.name, product_color
 %hr{color: "green"}
-- if @current_user.email == "verch.systems@gmail.com" 
-  %p
-    %b Product Type:
-    = @product_type.name
-  %table
-    %tr
-      %th Name
-      %th Desc
-      %th Product type
-      %th
-      %th
-      %th
-
-    - @product_colors.each do |product_color|
+- if @current_user
+  - if @current_user.email == "verch.systems@gmail.com" 
+    %p
+      %b Product Type:
+      = @product_type.name
+    %table
       %tr
-        %td= product_color.name
-        %td= product_color.desc
-        %td= product_color.product_type_id
-        %td= link_to 'Show', product_color
-        %td= link_to 'Edit', edit_product_color_path(product_color)
-        %td= link_to 'Destroy', product_color, :confirm => 'Are you sure?', :method => :delete
+        %th Name
+        %th Desc
+        %th Product type
+        %th
+        %th
+        %th
 
-  %br
+      - @product_colors.each do |product_color|
+        %tr
+          %td= product_color.name
+          %td= product_color.desc
+          %td= product_color.product_type_id
+          %td= link_to 'Show', product_color
+          %td= link_to 'Edit', edit_product_color_path(product_color)
+          %td= link_to 'Destroy', product_color, :confirm => 'Are you sure?', :method => :delete
 
-  = render "/product_colors/form"
-  = link_to 'Edit', edit_product_type_path(@product_type)
-  \|
-  = link_to 'Back', @product_type.product
+    %br
+
+    = render "/product_colors/form"
+    = link_to 'Edit', edit_product_type_path(@product_type)
+    \|
+    = link_to 'Back', @product_type.product

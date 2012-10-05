@@ -1,6 +1,6 @@
-class SessionsController < ApplicationController
+﻿class SessionsController < ApplicationController
   
-  skip_before_filter :authorize, :admin_check
+  skip_before_filter :authorize, :curr
 
   def new
   end
@@ -9,9 +9,9 @@ class SessionsController < ApplicationController
   	user = User.find_by_email(params[:email])
   	if user and user.authenticate(params[:password])
   		session[:user_id] = user.id
-  		redirect_to "/", alert: "Hello #{user.name}"
+  		redirect_to "/", alert: "Добро пожаловать, #{user.name}"
   	else
-  		redirect_to '/login', alert: "Wrong email or pass"
+  		redirect_to '/login', alert: "Неверный e-mail или пароль"
   	end
   end
 

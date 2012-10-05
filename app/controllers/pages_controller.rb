@@ -1,14 +1,18 @@
 class PagesController < ApplicationController
-  skip_before_filter :authorize, only:[:home, :contact]
-  skip_before_filter :admin_check, only:[:home, :contact]
+  skip_before_filter :authorize
 
   def home
   end
 
-  def contact
+  def convertsizes
   end
 
-  def adminpage
-    @user_group = UserGroup.all
+  def scheme
+  end
+
+  def about  	
+  end
+
+  def contact
   end
 end
