@@ -26,7 +26,10 @@
 					= link_to "Вход", login_path
 		#left_main_column
 			#cart
-				%h6 Привет, корзина
+				= link_to "Поиск товара", product_sizes_path
+				- if @cart
+					%hr{color: "green"}
+					= render @cart
 			#left_main_menu
 				= link_to "Футболки", "/products/1"
 				= link_to "Рубашки поло", "/products/3"

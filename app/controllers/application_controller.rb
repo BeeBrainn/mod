@@ -3,7 +3,6 @@
 
 	before_filter :authorize
 	before_filter :curr
-
 	protected
 		def authorize
 			unless User.find_by_id(session[:user_id])
@@ -19,6 +18,7 @@
 				@current_user = nil
 				@current_group = nil
 			end
+			@cart = current_cart
 		end
 
 		def admin_check
@@ -31,5 +31,14 @@
 			unless @current_user.email == "verch.systems@gmail.com"
 				redirect_to root_path
 			end
+		end
+
+	private
+		def current_cart
+			Cart.find(session[:cart_id])
+		rescue ActiveRecord::RecordNotFound
+			cart = Cart.create
+			session[:cart_id] = cart.id
+			cart
 		end
 end

@@ -82,7 +82,7 @@ class ProductSizesController < ApplicationController
     @product_size.destroy
 
     respond_to do |format|
-      format.html { redirect_to @product_size.product_color }
+      format.html { redirect_to product_sizes_path }
       format.json { head :no_content }
     end
   end

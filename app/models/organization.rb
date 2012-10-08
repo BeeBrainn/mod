@@ -1,5 +1,6 @@
 class Organization < ActiveRecord::Base
   belongs_to :user
+  has_many :orders
   attr_accessible :user, :user_id, :type_of_ownership,
                   :company_name, :unp, :juridical_address, 
                   :mailing_address, :contact_name, :phone_number_0,

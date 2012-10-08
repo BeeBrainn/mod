@@ -2,6 +2,7 @@
 
 - @product_sizes.each do |product_size|
   = link_to product_size.name, product_size
+  = button_to "В корзину", line_items_path(product_size_id: product_size), remote: true
 %hr{color: "green"}
 - if @current_user
   - if @current_user.email == "verch.systems@gmail.com" 
