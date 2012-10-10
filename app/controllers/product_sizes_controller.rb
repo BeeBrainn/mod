@@ -3,7 +3,45 @@ class ProductSizesController < ApplicationController
   # GET /product_sizes
   # GET /product_sizes.json
   def index
+    @product = Product.new
+    @product_type = ProductType.new
+    @product_color = ProductColor.new
+
     @product_sizes = ProductSize.all
+    if params[:product_color]
+      @search_products = Product.all
+      @search_product_types = ProductType.all
+      @search_product_colors = ProductColor.all
+      @search_product_sizes = ProductSize.where("product_color_id = #{params[:product_color][:id]}")
+    else
+      if params[:product_type]
+        @search_products = Product.all
+        @search_product_types = ProductType.all
+        @search_product_colors = ProductColor.where("product_type_id = #{params[:product_type][:id]}")
+        temp_product_color_id = ProductColor.find_by_product_type_id(params[:product_type][:id]).id
+        @search_product_sizes = ProductSize.where("product_color_id = #{temp_product_color_id}")
+      else
+        if params[:product]
+          @search_products = Product.all
+          @search_product_types = ProductType.where("product_id = #{params[:product][:id]}")
+          @search_product_colors = ProductColor.where("product_type_id = 1")
+          @search_product_sizes = ProductSize.where("product_color_id = 1")
+
+          @current_product = params[:product][:name]
+          @current_product_type = ''
+          @current_product_color = ''
+        else
+          @search_products = Product.all
+          @search_product_types = ProductType.where("id = 0")
+          @search_product_colors = ProductColor.where("id = 0")
+          @search_product_sizes = ProductSize.where("id = 0")
+
+          @current_product = ''
+          @current_product_type = ''
+          @current_product_color = ''
+        end
+      end
+    end
 
     respond_to do |format|
       format.html # index.html.erb
