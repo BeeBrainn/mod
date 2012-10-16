@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+﻿class UsersController < ApplicationController
   before_filter :admin_check
   skip_before_filter :authorize, only:[:new, :create]
   skip_before_filter :admin_check, only:[:new, :create, :show, :edit]
@@ -50,8 +50,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        session[:user_id] = @user.id
-        format.html { redirect_to new_organization_path, notice: 'User was successfully created.' }
+        format.html { redirect_to login_path, alert: 'Свяжитесь с администратором для подтверждения регистрации.' }
         format.json { render json: @user, status: :created, location: @user }
       else
         format.html { render action: "new" }

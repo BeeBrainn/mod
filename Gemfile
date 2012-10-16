@@ -12,11 +12,4 @@ gem 'haml-rails'
 gem 'sass-rails'
 gem 'jquery-rails'
 gem 'coffee-rails', '~> 3.2.1'
-
-group :development do
-  gem 'sqlite3'
-end
-
-group :production do
-  gem 'pg'
-end
+gem 'sqlite3'

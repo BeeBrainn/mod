@@ -1,3 +1,72 @@
 // Place all the styles related to the ProductTypes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#order_menu {
+	display: none;
+}
+
+#link_to_order_menu
+{
+	background-color: royalblue;
+	color: white;
+	font-weight: bold;
+	padding: 5px 10px;
+	width: 90px;
+	border: 2px solid lightblue;
+	border-radius: 7px;
+	text-decoration: none;
+	text-align: center;
+}
+
+#link_to_order_menu:hover
+{
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+#link_to_order_menu_color
+{
+	//background-color: ;		//bg-color ?
+	color: black;				//change color?
+	font-weight: bold;
+	padding: 5px 10px;
+	width: 90px;
+	border: 2px solid grey;
+	border-radius: 2px;
+	text-decoration: none;
+	text-align: center;	
+
+	float: left;
+}
+
+#link_to_order_menu_color:hover
+{
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.table_to_cart
+{
+	margin: 20px auto;
+	padding: 10px;
+	border: 3px solid royalblue;
+}
+
+#link_out_order_menu
+{
+	background-color: royalblue;
+	color: white;
+	font-weight: bold;
+	padding: 5px 10px;
+	width: 90px;
+	border: 2px solid lightblue;
+	border-radius: 7px;
+	text-decoration: none;
+	text-align: center;
+}
+
+#link_out_order_menu:hover
+{
+	text-decoration: underline;
+	cursor: pointer;
+}
