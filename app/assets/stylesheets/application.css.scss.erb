@@ -111,12 +111,15 @@ a#nav_user_name {
 
 	a {
 		display: block;
-		//padding: 10px 0px;
+		padding: 10px 0px;
 		text-align: center;
-		margin-top: 10px;
-		//background-color: darkcyan;
-		//border-top-right-radius: 15px;
-		background-image:url(<%=asset_path "Button1.png"%>);
+		margin-top: 7px;
+		background: url(<%=asset_path 'Button1.png'%>) no-repeat center;
+		background-size: cover;
+	}
+	a:hover {
+		background: url(<%=asset_path 'Button2.png'%>) no-repeat center;
+		background-size: cover;
 	}
 }
 
