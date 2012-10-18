@@ -12,6 +12,15 @@
  *= require_tree .
  */
 
+#temp_params_info {
+	float: left;
+	z-index: 10;
+	padding: 7px;
+	border: 1px solid blue;
+	background-color: rgba(70,70,200,0.5);
+	position: absolute;
+}
+
 body {
 	border-collapse: collapse;
 	margin: 0;
@@ -21,13 +30,15 @@ body {
 #nav {
 	padding: 20px 20px;
 	border-bottom: 13px solid grey;
+	background-color: lightyellow;
 
 	a {
 		color: white;
 		display: inline-block;
-		padding: 2px 7px;
+		padding: 3px 8px;
 		text-align: center;
-		background-color: grey;
+		background: url(<%=asset_path 'button_top_up.png'%>) no-repeat center;
+		background-size: cover;
 		border-top-right-radius: 10px;
 		border-bottom-left-radius: 10px;
 		text-decoration: none;
@@ -48,6 +59,7 @@ body {
 
 #nav_user {
 	float: right;
+	padding-bottom: 2px;
 	border-bottom: 2px solid royalblue;
 
 	a {
@@ -110,13 +122,18 @@ a#nav_user_name {
 	padding: 5%;
 
 	a {
+		border-top-right-radius: 15px;
+		text-decoration: none;
 		display: block;
-		//padding: 10px 0px;
+		padding: 10px 0px;
 		text-align: center;
-		margin-top: 10px;
-		//background-color: darkcyan;
-		//border-top-right-radius: 15px;
-		background-image:url(<%=asset_path "Button1.png"%>);
+		margin-top: 7px;
+		background: url(<%=asset_path 'button_left_up.png'%>) no-repeat center;
+		background-size: cover;
+	}
+	a:hover {
+		background: url(<%=asset_path 'button_left_down.png'%>) no-repeat center;
+		background-size: cover;
 	}
 }
 

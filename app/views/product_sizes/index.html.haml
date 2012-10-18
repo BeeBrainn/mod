@@ -1,32 +1,25 @@
 %h1 Поиск товара
 
-Товар:
-= form_for @product, method: :get, url:{action:"index", controller:product_sizes_path} do |f|
-  .field
-    = f.collection_select(:id, @search_products, :id, :name,{prompt: @current_product})
-Тип:
-= form_for @product_type, method: :get, url:{action:"index", controller:product_sizes_path} do |f|
-  .field
-    = f.collection_select(:id, @search_product_types, :id, :name,{prompt: @current_product_type})
-Цвет:
-= form_for @product_color, method: :get, url:{action:"index", controller:product_sizes_path} do |f|
-  .field
-    = f.collection_select(:id, @search_product_colors, :id, :name,{prompt: @current_product_color})
+= form_tag '/product_sizes', method: :get do
+  Товар:
+  = select_tag "product_id", options_from_collection_for_select(@products, "id", "name", @current_product.id), prompt: @current_product.name
+  Тип:
+  = select_tag "product_type_id", options_from_collection_for_select(@product_types, "id", "name", @current_product_type.id), prompt: @current_product_type.name
+  Цвет:
+  = select_tag "product_color_id", options_from_collection_for_select(@product_colors, "id", "name", @current_product_color.id), prompt: @current_product_color.name
   
 %hr{color:"green"}
 
-%table
-  %tr
-    %th Товар
-    %th Тип
-    %th Цвет
-    %th Размер
-    %th Цена
-  
-  - @search_product_sizes.each do |product_size|
+- if @product_sizes.first
+  %table.table_to_cart
     %tr
-      %td= Product.find_by_id(ProductType.find_by_id(ProductColor.find_by_id(product_size.product_color).product_type).product).name
-      %td= ProductType.find_by_id(ProductColor.find_by_id(product_size.product_color).product_type).name
-      %td= ProductColor.find_by_id(product_size.product_color).name
-      %td= product_size.name
-      %td= product_size.price
+    - @product_sizes.each do |product_size|
+      %td
+        %b=product_size.name
+    %tr
+    - @product_sizes.each do |product_size|
+      %td
+        %input{size: 3}
+    %tr 
+      %td{colspan: @product_sizes.count} 
+        %button Добавить в корзину

@@ -3,44 +3,34 @@ class ProductSizesController < ApplicationController
   # GET /product_sizes
   # GET /product_sizes.json
   def index
-    @product = Product.new
-    @product_type = ProductType.new
-    @product_color = ProductColor.new
+    @products = Product.all
+    @product_types = ProductType.where("id = 0")
+    @product_colors = ProductColor.where("id = 0")
+    @product_sizes = ProductSize.where("id = 0")
+    @current_product = Product.first
+    @current_product_type = ProductType.first
+    @current_product_color = ProductColor.first
+    @current_product.name = ''
+    @current_product_type.name = ''
+    @current_product_color.name = ''
+    @current_product.id = 0
+    @current_product_type.id = 0
+    @current_product_color.id = 0
 
-    @product_sizes = ProductSize.all
-    if params[:product_color]
-      @search_products = Product.all
-      @search_product_types = ProductType.all
-      @search_product_colors = ProductColor.all
-      @search_product_sizes = ProductSize.where("product_color_id = #{params[:product_color][:id]}")
-    else
-      if params[:product_type]
-        @search_products = Product.all
-        @search_product_types = ProductType.all
-        @search_product_colors = ProductColor.where("product_type_id = #{params[:product_type][:id]}")
-        temp_product_color_id = ProductColor.find_by_product_type_id(params[:product_type][:id]).id
-        @search_product_sizes = ProductSize.where("product_color_id = #{temp_product_color_id}")
-      else
-        if params[:product]
-          @search_products = Product.all
-          @search_product_types = ProductType.where("product_id = #{params[:product][:id]}")
-          @search_product_colors = ProductColor.where("product_type_id = 1")
-          @search_product_sizes = ProductSize.where("product_color_id = 1")
-
-          @current_product = params[:product][:name]
-          @current_product_type = ''
-          @current_product_color = ''
-        else
-          @search_products = Product.all
-          @search_product_types = ProductType.where("id = 0")
-          @search_product_colors = ProductColor.where("id = 0")
-          @search_product_sizes = ProductSize.where("id = 0")
-
-          @current_product = ''
-          @current_product_type = ''
-          @current_product_color = ''
-        end
-      end
+    if params[:product_id] && params[:product_id] != ''
+      @product_types = ProductType.where("product_id = ?", params[:product_id])
+      @current_product = Product.find_by_id(params[:product_id])
+    end
+    if params[:product_type_id] && params[:product_type_id] != ''
+      @product_colors = ProductColor.where("product_type_id = ?", params[:product_type_id])
+      @current_product_type = ProductType.find_by_id(params[:product_type_id])
+      @current_product = Product.find_by_id(params[:product_id])
+    end
+    if params[:product_color_id] && params[:product_color_id] != ''
+      @product_sizes = ProductSize.where("product_color_id = ?", params[:product_color_id])
+      @current_product_color = ProductColor.find_by_id(params[:product_color_id])
+      @current_product_type = ProductType.find_by_id(params[:product_type_id])
+      @current_product = Product.find_by_id(params[:product_id])
     end
 
     respond_to do |format|

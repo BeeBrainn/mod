@@ -6,6 +6,8 @@
 		= javascript_include_tag "application"
 		= csrf_meta_tags
 	%body
+		#temp_params_info
+			=params
 		=image_tag "Hat.png",{width: "100%" }
 		#nav
 			= link_to "Главная", "/"
@@ -27,8 +29,8 @@
 		#left_main_column
 			#cart
 				= link_to "Поиск товара", product_sizes_path
+				%hr{color: "green"}
 				- if @cart
-					%hr{color: "green"}
 					= render @cart
 			#left_main_menu
 				= link_to "Футболки", "/products/1"
