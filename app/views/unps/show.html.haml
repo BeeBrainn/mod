@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Unp:
+  = @unp.unp
+%p
+  %b Total amount:
+  = @unp.total_amount
+
+= link_to 'Edit', edit_unp_path(@unp)
+\|
+= link_to 'Back', unps_path

@@ -14,11 +14,7 @@
       else
     		if user.reg_confirm_admin
           session[:user_id] = user.id
-          if Organization.find_by_user_id(user.id)
-    		    redirect_to "/", alert: "Добро пожаловать, #{user.name}"
-          else
-            redirect_to new_organization_path, alert: "Зарегестрируйте свою организацию"
-          end
+          redirect_to user, alert: "Добро пожаловать!"
         else
           redirect_to "/login", alert: "Регистрация не подтверждена Администратором"	
         end

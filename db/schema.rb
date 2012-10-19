@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121005210811) do
+ActiveRecord::Schema.define(:version => 20121018140430) do
 
   create_table "carts", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -35,30 +35,6 @@ ActiveRecord::Schema.define(:version => 20121005210811) do
     t.boolean  "reserv_flag",     :default => false
     t.datetime "created_at",                         :null => false
     t.datetime "updated_at",                         :null => false
-  end
-
-  create_table "organizations", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "type_of_ownership"
-    t.string   "company_name"
-    t.string   "unp"
-    t.string   "juridical_address"
-    t.string   "mailing_address"
-    t.string   "contact_name"
-    t.string   "phone_number_0"
-    t.string   "phone_number_1"
-    t.string   "phone_number_2"
-    t.string   "phone_number_3"
-    t.string   "phone_number_4"
-    t.string   "phone_number_5"
-    t.string   "phone_number_6"
-    t.string   "phone_number_7"
-    t.string   "phone_number_8"
-    t.string   "phone_number_9"
-    t.string   "email"
-    t.string   "work_time"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
   end
 
   create_table "product_colors", :force => true do |t|
@@ -100,6 +76,13 @@ ActiveRecord::Schema.define(:version => 20121005210811) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "unps", :force => true do |t|
+    t.string   "unp"
+    t.string   "total_amount"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
   create_table "user_groups", :force => true do |t|
     t.string   "name"
     t.integer  "least_order",      :default => 5
@@ -114,7 +97,17 @@ ActiveRecord::Schema.define(:version => 20121005210811) do
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
-    t.integer  "total_amount",      :default => 0
+    t.string   "type_of_ownership"
+    t.string   "company_name"
+    t.string   "unp"
+    t.string   "juridical_address"
+    t.string   "mailing_address"
+    t.string   "contact_name"
+    t.string   "phone_number_0"
+    t.string   "phone_number_1"
+    t.string   "phone_number_2"
+    t.string   "phone_number_3"
+    t.string   "work_time"
     t.boolean  "edit_data_flag",    :default => true
     t.boolean  "reg_confirm_admin", :default => false
     t.integer  "user_group_id",     :default => 1

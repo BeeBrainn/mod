@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  unp: MyString
+  total_amount: MyString
+
+two:
+  unp: MyString
+  total_amount: MyString

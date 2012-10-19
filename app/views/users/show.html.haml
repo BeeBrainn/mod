@@ -11,6 +11,41 @@
     %td Последний раз на сайте:
     %td= @user.updated_at.to_date
 %hr{color: "green"}
-%h5 Организации пользавателя:
-#user_organizations
-  = render '/organizations/showform'
+%h5 Организация пользавателя:
+%table
+  %tr
+    %td Форма собственности:
+    %td= @user.type_of_ownership
+  %tr
+    %td Название компании: 
+    %td= @user.company_name
+  %tr
+    %td УНП:
+    %td= @user.unp
+  %tr
+    %td Юридический адрес:
+    %td= @user.juridical_address
+  %tr
+    %td Почтовый адрес:
+    %td= @user.mailing_address
+  %tr
+    %td Контактное лицо:
+    %td= @user.contact_name
+  %tr
+    %td Номер телефона:
+    %td= @user.phone_number_0
+  -if @user.phone_number_1 != ""
+    %tr
+      %td Номер телефона:
+      %td= @user.phone_number_1
+  -if @user.phone_number_2 != ""
+    %tr
+      %td Номер телефона:
+      %td= @user.phone_number_2
+  -if @user.phone_number_3 != ""  
+    %tr
+      %td Номер телефона:
+      %td= @user.phone_number_3
+  %tr
+    %td Время работы:
+    %td= @user.work_time

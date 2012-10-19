@@ -1,7 +1,7 @@
 ﻿class UsersController < ApplicationController
   before_filter :admin_check
   skip_before_filter :authorize, only:[:new, :create]
-  skip_before_filter :admin_check, only:[:new, :create, :show, :edit]
+  skip_before_filter :admin_check, only:[:new, :create, :show, :edit, :update]
   # GET /users
   # GET /users.json
   def index
@@ -17,7 +17,6 @@
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
-    @organizations = Organization.find_all_by_user_id(@current_user.id)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -39,8 +38,6 @@
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
-    @organization = Organization.new(:user => @current_user)
-    @organizations = Organization.find_all_by_user_id(@current_user.id)
   end
 
   # POST /users
@@ -50,6 +47,11 @@
 
     respond_to do |format|
       if @user.save
+        unless Unp.find_by_unp(@user.unp)
+          @unp = Unp.new
+          @unp.unp = @user.unp
+          @unp.save
+        end
         format.html { redirect_to login_path, alert: 'Свяжитесь с администратором для подтверждения регистрации.' }
         format.json { render json: @user, status: :created, location: @user }
       else

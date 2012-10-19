@@ -1,4 +1,4 @@
-= form_for @user do |f|
+﻿= form_for @user do |f|
   -if @user.errors.any?
     #error_explanation
       %h2= "#{pluralize(@user.errors.count, "error")} prohibited this user from being saved:"
@@ -7,16 +7,57 @@
           %li= msg
 
   .field
-    = f.label "Имя"
+    = f.label "Имя:"
     = f.text_field :name
   .field
-    = f.label :email
+    = f.label "Адрес электронной почты:"
     = f.email_field :email
   .field
-    = f.label "Пароль"
+    = f.label "Пароль:"
     = f.password_field :password
   .field
-    = f.label "Подтверждение пароля"
+    = f.label "Подтверждение пароля:"
     = f.password_field :password_confirmation
-  .actions
-    = f.submit 'Зарегистрироваться'
+  .field
+    = f.label "Форма собственности: "
+    = f.text_field :type_of_ownership
+  .field
+    = f.label "Название организации: "
+    = f.text_field :company_name
+  .field
+    = f.label "УНП: "
+    = f.text_field :unp
+  .field
+    = f.label "Юридический адрес: "
+    = f.text_field :juridical_address
+  .field
+    = f.label "Почтовый адрес: "
+    = f.text_field :mailing_address
+  .field
+    = f.label "Контактное лицо: "
+    = f.text_field :contact_name
+  %div#phones
+    .field
+      = f.label "Номер телефона: "
+      = f.text_field :phone_number_0
+    .field
+      = f.label "Номер телефона: "
+      = f.text_field :phone_number_1
+    .field
+      = f.label "Номер телефона: "
+      = f.text_field :phone_number_2
+    .field
+      = f.label "Номер телефона: "
+      = f.text_field :phone_number_3
+  =link_to "Add phone number", "#",{:class => "my_button", :remote => true}
+  %br
+  %br
+  .field
+    = f.label "Время работы: "
+    = f.text_field :work_time
+  -if (params[:action] == "edit")
+    .actions
+      = f.submit 'Сохранить'
+  -else
+    .actions
+      = f.submit 'Зарегистрироваться'

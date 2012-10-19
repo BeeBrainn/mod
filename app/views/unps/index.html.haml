@@ -1,0 +1,21 @@
+%h1 Listing unps
+
+%table
+  %tr
+    %th Unp
+    %th Total amount
+    %th
+    %th
+    %th
+
+  - @unps.each do |unp|
+    %tr
+      %td= unp.unp
+      %td= unp.total_amount
+      %td= link_to 'Show', unp
+      %td= link_to 'Edit', edit_unp_path(unp)
+      %td= link_to 'Destroy', unp, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Unp', new_unp_path
