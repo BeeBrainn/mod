@@ -9,7 +9,7 @@
     %td= mail_to @user.email
   %tr
     %td Последний раз на сайте:
-    %td= @user.updated_at.to_date
+    %td= @user.last_in.in_time_zone('Minsk')
 %hr{color: "green"}
 %h5 Организация пользавателя:
 %table
@@ -46,6 +46,9 @@
     %tr
       %td Номер телефона:
       %td= @user.phone_number_3
+  %tr
+    %td Skype:
+    %td= @user.skype
   %tr
     %td Время работы:
     %td= @user.work_time

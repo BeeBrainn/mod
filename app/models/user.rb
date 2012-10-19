@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   				  :phone_number_0, :phone_number_1, :phone_number_2, 
   				  :phone_number_3, :phone_number_4, :phone_number_5, 
   				  :phone_number_6, :phone_number_7, :phone_number_8, 
-  				  :phone_number_9, :work_time
+  				  :phone_number_9, :skype, :work_time
   validates :name, :email, :presence => true
   validates :email, :uniqueness => true
 end

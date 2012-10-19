@@ -44,7 +44,7 @@
   # POST /users.json
   def create
     @user = User.new(params[:user])
-
+    @user.last_in = DateTime.now
     respond_to do |format|
       if @user.save
         unless Unp.find_by_unp(@user.unp)

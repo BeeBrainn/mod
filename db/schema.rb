@@ -107,9 +107,11 @@ ActiveRecord::Schema.define(:version => 20121018140430) do
     t.string   "phone_number_1"
     t.string   "phone_number_2"
     t.string   "phone_number_3"
+    t.string   "skype"
     t.string   "work_time"
     t.boolean  "edit_data_flag",    :default => true
     t.boolean  "reg_confirm_admin", :default => false
+    t.datetime "last_in"
     t.integer  "user_group_id",     :default => 1
     t.datetime "created_at",                           :null => false
     t.datetime "updated_at",                           :null => false

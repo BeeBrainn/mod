@@ -53,6 +53,9 @@
   %br
   %br
   .field
+    = f.label "Skype: "
+    = f.text_field :skype
+  .field
     = f.label "Время работы: "
     = f.text_field :work_time
   -if (params[:action] == "edit")

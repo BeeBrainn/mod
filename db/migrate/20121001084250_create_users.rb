@@ -14,9 +14,11 @@ class CreateUsers < ActiveRecord::Migration
       t.string :phone_number_1
       t.string :phone_number_2
       t.string :phone_number_3
+      t.string :skype
       t.string :work_time
       t.boolean :edit_data_flag, default: true
       t.boolean :reg_confirm_admin, default: false
+      t.datetime :last_in
       t.references :user_group, default: 1 #тобишь к юзерам прикручиваем(не к админам!)
       
       
