@@ -1,4 +1,5 @@
 #rails runner ~/Projects/modern/putdb.rb
+#for heroku copy to heroku console
 
 temp_product = Product.new
 temp_product.name = "Футболки"

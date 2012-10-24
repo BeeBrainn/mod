@@ -27,7 +27,6 @@ Modern::Application.routes.draw do
   resources :product_types
   resources :products
 
-  resources :organizations
   resources :users
   resources :user_groups
 

@@ -9,10 +9,13 @@
   	user = User.find_by_email(params[:email])
   	if user and user.authenticate(params[:password])
       if UserGroup.find_by_id(user.user_group_id).admin_flag
+        user.last_in = DateTime.now
         session[:user_id] = user.id
         redirect_to user, alert: "Ух-ты... Админ!!!"
       else
     		if user.reg_confirm_admin
+          user.last_in = DateTime.now ####
+          user.save ####
           session[:user_id] = user.id
           redirect_to user, alert: "Добро пожаловать!"
         else

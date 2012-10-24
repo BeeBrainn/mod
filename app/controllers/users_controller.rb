@@ -38,6 +38,8 @@
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
+    @user_groups = UserGroup.all
+    @current_user_group = UserGroup.find_by_id(@user.user_group_id)
   end
 
   # POST /users

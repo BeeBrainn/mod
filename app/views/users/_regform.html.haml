@@ -6,6 +6,8 @@
         - @user.errors.full_messages.each do |msg|
           %li= msg
 
+  - if @current_group.admin_flag
+    = f.select "user_group_id", options_from_collection_for_select(@user_groups, "id", "name", @current_user_group.id)
   .field
     = f.label "Имя:"
     = f.text_field :name
