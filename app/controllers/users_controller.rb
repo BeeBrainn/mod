@@ -5,8 +5,15 @@
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
-
+    if params[:temp_id] == "1"
+      @users = User.where("reg_confirm_admin = ?", true)
+      #@current_item = 'Зарегестрированные пользователи'
+    else
+      if params[:temp_id] == "2"
+        @users = User.where("reg_confirm_admin = ?", false)
+        #@current_item = 'Ожидают регистрации'
+      end
+    end    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @users }
@@ -39,7 +46,7 @@
   def edit
     @user = User.find(params[:id])
     @user_groups = UserGroup.all
-    @current_user_group = UserGroup.find_by_id(@user.user_group_id)
+    @current_user_group = UserGroup.find_by_id(@user.user_group_id) 
   end
 
   # POST /users
@@ -67,6 +74,8 @@
   # PUT /users/1.json
   def update
     @user = User.find(params[:id])
+    @user_groups = UserGroup.all
+    @current_user_group = UserGroup.find_by_id(@user.user_group_id) 
 
     respond_to do |format|
       if @user.update_attributes(params[:user])

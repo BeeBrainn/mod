@@ -90,3 +90,35 @@ end
 	temp_product_size.reserv = 0
 	temp_product_size.save
 end
+temp_user_group = UserGroup.new
+temp_user_group.name = "user"
+temp_user_group.admin_flag = false
+temp_user_group.view_reserv_flag = true
+temp_user_group.view_sklad_flag = true
+temp_user_group.save
+
+temp_user_group = UserGroup.new
+temp_user_group.name = "admin"
+temp_user_group.admin_flag = true
+temp_user_group.view_reserv_flag = true
+temp_user_group.view_sklad_flag = true
+temp_user_group.save
+
+temp_user = User.new
+temp_user.name = "user"
+temp_user.email = "user@user"
+temp_user.password = "user"
+temp_user.password_confirmation = "user"
+temp_user.reg_confirm_admin = true
+temp_user.last_in = DateTime.now
+temp_user.save
+
+temp_user = User.new
+temp_user.name = "admin"
+temp_user.email = "admin@admin"
+temp_user.password = "admin"
+temp_user.password_confirmation = "admin"
+temp_user.reg_confirm_admin = true
+temp_user.user_group_id = 2
+temp_user.last_in = DateTime.now
+temp_user.save

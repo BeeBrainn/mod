@@ -1,5 +1,7 @@
 %h1 Listing users
-
+= form_tag '/users', method: :get do
+  = select_tag :temp_id, options_for_select([['Зарегестрированные пользователи', 1], ['Ожидают регистрации', 2]]), #prompt: @current_item 
+  = submit_tag 'apply'
 %table
   %tr
     %th Name
@@ -9,7 +11,7 @@
 
   - @users.each do |user|
     %tr
-      %td= user.name
+      %td= user.company_name
       %td= link_to 'Show', user
       %td= link_to 'Edit', edit_user_path(user)
       %td= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete
