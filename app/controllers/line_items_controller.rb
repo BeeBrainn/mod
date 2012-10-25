@@ -42,18 +42,25 @@ class LineItemsController < ApplicationController
   # POST /line_items.json
   def create
     @cart = current_cart
-    product_size = ProductSize.find(params[:product_size_id])
-    @line_item = @cart.add_product_size(product_size.id)
+    #product_size = ProductSize.find(params[:product_size_id])
+    #@line_item = @cart.add_product_size(product_size.id)
+    params[:product_sizes].each do |product_size_to_cart|
+      product_size = ProductSize.find_by_id(product_size_to_cart.first.to_i)
+      count_to_cart = params[:product_sizes][product_size_to_cart.first].to_i
+      if count_to_cart > 0 && count_to_cart < 1000
+        @cart.add_product_size(product_size.id, count_to_cart)
+      end
+    end
 
     respond_to do |format|
-      if @line_item.save
-        format.html { redirect_to product_size, notice: 'Line item was successfully created.' }
-        format.js {@current_item = @line_item}
+      #if @line_item.save
+        format.html { redirect_to product_sizes_path, notice: 'Line item was successfully created.' }
+        format.js #{@current_item = @line_item}
         format.json { render json: @line_item, status: :created, location: @line_item }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @line_item.errors, status: :unprocessable_entity }
-      end
+      #else
+      #  format.html { render action: "new" }
+      #  format.json { render json: @line_item.errors, status: :unprocessable_entity }
+      #end
     end
   end
 
