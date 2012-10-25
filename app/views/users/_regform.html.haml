@@ -7,7 +7,11 @@
           %li= msg
 
   - if @current_group.admin_flag
-    = f.select "user_group_id", options_from_collection_for_select(@user_groups, "id", "name", @current_user_group.id)
+    .field
+      = f.select "user_group_id", options_from_collection_for_select(@user_groups, "id", "name", @current_user_group.id)
+    .field
+      = f.label "Подтверждение регистрации:"
+      = f.check_box :reg_confirm_admin
   .field
     = f.label "Имя:"
     = f.text_field :name
@@ -23,9 +27,17 @@
   .field
     = f.label "Форма собственности: "
     = f.text_field :type_of_ownership
-  .field
-    = f.label "Название организации: "
-    = f.text_field :company_name
+  - if @user.edit_data_flag  
+    .field
+      = f.label "Название организации: "
+      = f.text_field :company_name
+      - if @current_group.admin_flag
+        = f.label "Разрешить редактирование: "
+        = f.check_box :edit_data_flag
+  - else
+    .field
+      = f.label "Название организации: "
+      = f.label @user.company_name
   .field
     = f.label "УНП: "
     = f.text_field :unp

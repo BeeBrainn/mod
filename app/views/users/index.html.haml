@@ -1,7 +1,6 @@
-%h1 Listing users
+﻿%h1 Listing users
 = form_tag '/users', method: :get do
-  = select_tag :temp_id, options_for_select([['Зарегестрированные пользователи', 1], ['Ожидают регистрации', 2]], params[:temp_id]) 
-  = submit_tag 'apply'
+  = select_tag :temp_id, options_for_select([['Зарегестрированные пользователи', 1], ['Ожидают регистрации', 2]], params[:temp_id])
 %table
   %tr
     %th Name

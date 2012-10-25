@@ -8,7 +8,8 @@ class User < ActiveRecord::Base
   				  :phone_number_0, :phone_number_1, :phone_number_2, 
   				  :phone_number_3, :phone_number_4, :phone_number_5, 
   				  :phone_number_6, :phone_number_7, :phone_number_8, 
-  				  :phone_number_9, :skype, :work_time, :user_group_id
+  				  :phone_number_9, :skype, :work_time, :user_group_id,
+            :reg_confirm_admin, :edit_data_flag
   validates :name, :email, :presence => true
   validates :email, :uniqueness => true
 end

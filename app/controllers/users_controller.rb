@@ -10,6 +10,8 @@
     else
       if params[:temp_id] == "2"
         @users = User.where("reg_confirm_admin = ?", false)
+      else
+        @users = User.where("reg_confirm_admin = ?", true)
       end
     end    
     respond_to do |format|

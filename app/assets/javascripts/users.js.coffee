@@ -7,3 +7,7 @@ $ ->
 	$("#phones").children(".field:eq(0)").removeClass("hide")
 	$(".my_button").click(()->
 		$("#phones").children(".field.hide:first").slideDown(350).removeClass("hide"))
+
+$ ->
+	$("#temp_id").change(->
+		$(this).closest("form").submit())
