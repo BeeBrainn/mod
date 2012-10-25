@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(:version => 20121018140430) do
   create_table "line_items", :force => true do |t|
     t.integer  "product_size_id"
     t.integer  "cart_id"
-    t.integer  "quantity",        :default => 1
+    t.integer  "quantity",        :default => 0
     t.integer  "order_id"
     t.datetime "created_at",                     :null => false
     t.datetime "updated_at",                     :null => false
