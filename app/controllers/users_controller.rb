@@ -7,11 +7,9 @@
   def index
     if params[:temp_id] == "1"
       @users = User.where("reg_confirm_admin = ?", true)
-      #@current_item = 'Зарегестрированные пользователи'
     else
       if params[:temp_id] == "2"
         @users = User.where("reg_confirm_admin = ?", false)
-        #@current_item = 'Ожидают регистрации'
       end
     end    
     respond_to do |format|
