@@ -6,7 +6,7 @@
         - @user.errors.full_messages.each do |msg|
           %li= msg
 
-  - if @current_group.admin_flag
+  - if @current_group != nil && @current_group.admin_flag
     .field
       = f.select "user_group_id", options_from_collection_for_select(@user_groups, "id", "name", @current_user_group.id)
     .field
@@ -31,7 +31,7 @@
     .field
       = f.label "Название организации: "
       = f.text_field :company_name
-      - if @current_group.admin_flag
+      - if @current_group != nil && @current_group.admin_flag
         = f.label "Разрешить редактирование: "
         = f.check_box :edit_data_flag
   - else

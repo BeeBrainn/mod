@@ -12,6 +12,17 @@ $ -> #reload page when change option for sort
 	$("#temp_id").change(->
 		$(this).closest("form").submit())
 
-$ -> #filter users
-	$("input").keypress((e)->
-		console.log((this).val()) if e.which==13)
+$ ->
+	$("input")
+      .change(()-> 
+        filter = $(this).val();
+        if(filter)
+          $("tr.company_name").children("td:first:not(:Contains(" + filter + "))").parent().slideUp();
+          $("tr.company_name").children("td:first:Contains(" + filter + ")").parent().slideDown();
+        else
+          $("tr.company_name").slideDown();
+        return false;
+      )
+    .keyup(()->
+        $(this).change();
+    );
