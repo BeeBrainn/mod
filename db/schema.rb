@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121018140430) do
+ActiveRecord::Schema.define(:version => 20121030131314) do
 
   create_table "carts", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(:version => 20121018140430) do
   create_table "line_items", :force => true do |t|
     t.integer  "product_size_id"
     t.integer  "cart_id"
-    t.integer  "quantity",        :default => 0
+    t.integer  "quantity",        :default => 1
     t.integer  "order_id"
     t.datetime "created_at",                     :null => false
     t.datetime "updated_at",                     :null => false
@@ -75,6 +75,17 @@ ActiveRecord::Schema.define(:version => 20121018140430) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "specs", :force => true do |t|
+    t.integer  "number"
+    t.datetime "date"
+    t.integer  "sum"
+    t.integer  "unp_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "specs", ["unp_id"], :name => "index_specs_on_unp_id"
 
   create_table "unps", :force => true do |t|
     t.string   "unp"

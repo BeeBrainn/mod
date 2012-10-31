@@ -1,5 +1,7 @@
 Modern::Application.routes.draw do
   
+  resources :specs
+
   resources :unps
 
   resources :orders

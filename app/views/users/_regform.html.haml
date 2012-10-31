@@ -44,6 +44,10 @@
   .field
     = f.label "Юридический адрес: "
     = f.text_field :juridical_address
+    %br
+    = f.label "Совподает с почтовым: "
+    = check_box_tag :mail_duplicate, "false"
+    %br
   .field
     = f.label "Почтовый адрес: "
     = f.text_field :mailing_address

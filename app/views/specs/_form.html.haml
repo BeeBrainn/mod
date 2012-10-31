@@ -1,0 +1,22 @@
+= form_for @spec do |f|
+  -if @spec.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@spec.errors.count, "error")} prohibited this spec from being saved:"
+      %ul
+        - @spec.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :number
+    = f.number_field :number
+  .field
+    = f.label :date
+    = f.datetime_select :date
+  .field
+    = f.label :sum
+    = f.number_field :sum
+  .field
+    = f.label :unp
+    = f.text_field :unp
+  .actions
+    = f.submit 'Save'

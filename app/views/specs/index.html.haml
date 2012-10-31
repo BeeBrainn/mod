@@ -1,0 +1,25 @@
+%h1 Listing specs
+
+%table
+  %tr
+    %th Number
+    %th Date
+    %th Sum
+    %th Unp
+    %th
+    %th
+    %th
+
+  - @specs.each do |spec|
+    %tr
+      %td= spec.number
+      %td= spec.date
+      %td= spec.sum
+      %td= spec.unp
+      %td= link_to 'Show', spec
+      %td= link_to 'Edit', edit_spec_path(spec)
+      %td= link_to 'Destroy', spec, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Spec', new_spec_path

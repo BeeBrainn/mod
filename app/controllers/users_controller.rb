@@ -54,6 +54,9 @@
   def create
     @user = User.new(params[:user])
     @user.last_in = DateTime.now
+    if params[:mail_duplicate]
+      @user.mailing_address = @user.juridical_address
+    end
     respond_to do |format|
       if @user.save
         unless Unp.find_by_unp(@user.unp)

@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Number:
+  = @spec.number
+%p
+  %b Date:
+  = @spec.date
+%p
+  %b Sum:
+  = @spec.sum
+%p
+  %b Unp:
+  = @spec.unp
+
+= link_to 'Edit', edit_spec_path(@spec)
+\|
+= link_to 'Back', specs_path

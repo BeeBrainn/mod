@@ -26,3 +26,13 @@ $ ->
     .keyup(()->
         $(this).change();
     );
+
+$ ->
+  $("#mail_duplicate").click(()->
+    if($(this).val() == "false")
+      $("#user_mailing_address").parent().slideUp();
+      $(this).val("true");
+    else
+      $("#user_mailing_address").parent().slideDown();
+      $(this).val("false");
+  );
