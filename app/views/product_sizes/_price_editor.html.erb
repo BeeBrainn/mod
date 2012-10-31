@@ -11,6 +11,7 @@
     <% end %>
     <%= product_size.name %></td>
   <% end %>
+  <td>Все</td>
   </tr>
   <tr>
   <% @product_sizes.each do |product_size| %>
@@ -24,6 +25,7 @@
       </div>      
     </td>
   <% end %>
+  <td class="td_product_price"> inp </td>
   </tr>
   <tr>
   <% @product_sizes.each do |product_size| %>
@@ -31,6 +33,7 @@
       <div class="static_product_count"><%= product_size.count %></div>
     </td>
   <% end %>
+  <td class="td_product_count"> - </td>
   </tr>
   <tr>
   <% @product_sizes.each do |product_size| %>
@@ -44,11 +47,13 @@
       </div>
     </td>
   <% end %>
+  <td class="td_product_count"> inp1 </td>
   </tr>
   <tr>
   <% @product_sizes.each do |product_size| %>
     <td class="td_product_reserv"><%= product_size.reserv %></td>
   <% end %>
+  <td class="td_product_reserv"> - </td>
   </tr>
   </table>
   </td>

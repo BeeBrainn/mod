@@ -1,9 +1,12 @@
 <% if line_item == @current_item %>
-	<tr id="current_item">
+<tr id="current_item">
 <% else %>
-	<tr>
-<% end %>		
-		<td><%= line_item.quantity%>&times</td>
-		<td><%= line_item.product_size.name %></td>
-		<td class="item_price"><%= number_to_currency(line_item.total_price) %></td>
-	</tr>
+<tr>
+<% end %>
+<td><%= Product.find_by_id(ProductType.find_by_id(ProductColor.find_by_id(ProductSize.find_by_id(line_item.product_size_id).product_color_id).product_type_id).product_id).name %></td>
+<td><%= ProductType.find_by_id(ProductColor.find_by_id(ProductSize.find_by_id(line_item.product_size_id).product_color_id).product_type_id).name %></td>
+<td><%= ProductColor.find_by_id(ProductSize.find_by_id(line_item.product_size_id).product_color_id).name %></td>
+<td><%= line_item.quantity%>&times</td>
+<td><%= line_item.product_size.name %></td>
+<td class="item_price"><%= number_to_currency(line_item.total_price) %></td>
+</tr>
