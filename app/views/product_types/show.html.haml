@@ -1,4 +1,3 @@
-%p#notice= notice
 %b
   = @product_type.name
 #link_to_order_menu
@@ -8,26 +7,7 @@
   #link_out_order_menu
     Закрыть
   - @product_colors.each do |product_color|
-    #link_to_order_menu_color
-      = product_color.name
+    .link_to_order_menu_color
+      =link_to product_color.name, product_type_path(get_product_color_id: product_color.id), remote: true
   .clear
-  .hide= product_color = @product_colors.first
-  .hide= product_sizes = ProductSize.where("product_color_id = ?", product_color.id)
-
-  %table.table_to_cart
-    %tr 
-      %td{colspan: product_sizes.count} 
-        Цвет:
-        =product_color.name
-    = form_tag line_items_path, remote: true, method: :post  do
-      %tr
-        - product_sizes.each do |product_size_to_cart|
-          %td
-            = label_tag product_size_to_cart.id, product_size_to_cart.name
-      %tr
-        - product_sizes.each do |product_size_to_cart|
-          %td  
-            = text_field_tag "product_sizes[#{product_size_to_cart.id}]", "", size: "3"
-      %tr 
-        %td{colspan: product_sizes.count} 
-          = submit_tag "Добавить в корзину"
+  #list_to_cart  

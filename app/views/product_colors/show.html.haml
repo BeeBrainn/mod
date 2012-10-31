@@ -1,41 +1,6 @@
-%p#notice= notice
-
-- @product_sizes.each do |product_size|
-  = link_to product_size.name, product_size
-  = button_to "В корзину", line_items_path(product_size_id: product_size), remote: true
-%hr{color: "green"}
-- if @current_user
-  - if @current_user.email == "verch.systems@gmail.com" 
-    %p
-      %b Product Color:
-      = @product_color.name
-
-    %table
-      %tr
-        %th Name
-        %th Price
-        %th Count
-        %th Reserv
-        %th Number
-        %th Product color
-        %th
-        %th
-        %th
-
-      - @product_sizes.each do |product_size|
-        %tr
-          %td= product_size.name
-          %td= product_size.price
-          %td= product_size.count
-          %td= product_size.reserv
-          %td= product_size.number
-          %td= product_size.product_color_id
-          %td= link_to 'Show', product_size
-          %td= link_to 'Edit', edit_product_size_path(product_size)
-          %td= link_to 'Destroy', product_size, :confirm => 'Are you sure?', :method => :delete
-
-    %br
-    = render "/product_sizes/form"
-    = link_to 'Edit', edit_product_color_path(@product_color)
-    \|
-    = link_to 'Back', @product_color.product_type
+- if @current_group.admin_flag
+  %h1 Редактирование элементов склада
+  %i=link_to "Назад", :back
+  %br
+  - @product_sizes.each do |product_size|
+    =render "price_editor"

@@ -3,7 +3,7 @@ class ProductColorsController < ApplicationController
   # GET /product_colors
   # GET /product_colors.json
   def index
-    @product_colors = ProductColor.all
+    @product_colors = ProductColor.where("product_type_id = ?", params[:get_product_type_id])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,8 +15,7 @@ class ProductColorsController < ApplicationController
   # GET /product_colors/1.json
   def show
     @product_color = ProductColor.find(params[:id])
-    @product_size = ProductSize.new( :product_color => @product_color )
-    @product_sizes = ProductSize.find_all_by_product_color_id(@product_color.id)
+    @product_sizes = ProductSize.where("product_color_id = ?", @product_color.id)
 
     respond_to do |format|
       format.html # show.html.erb

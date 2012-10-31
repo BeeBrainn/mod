@@ -3,6 +3,8 @@ class CreateProductTypes < ActiveRecord::Migration
     create_table :product_types do |t|
       t.string :name
       t.text :desc
+      t.string :big_image_url
+      t.string :small_image_url
       t.references :product
 
       t.timestamps

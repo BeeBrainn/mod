@@ -1,23 +1,11 @@
-%h1 Listing product_colors
-
-%table
-  %tr
-    %th Name
-    %th Desc
-    %th Product type
-    %th
-    %th
-    %th
-
+- if @current_group.admin_flag
+  %h1 Редактирование элементов склада
+  %i=link_to "Назад", :back
+  %br
   - @product_colors.each do |product_color|
-    %tr
-      %td= product_color.name
-      %td= product_color.desc
-      %td= product_color.product_type
-      %td= link_to 'Show', product_color
-      %td= link_to 'Edit', edit_product_color_path(product_color)
-      %td= link_to 'Destroy', product_color, :confirm => 'Are you sure?', :method => :delete
-
-%br
-
-= link_to 'New Product color', new_product_color_path
+    %td
+      %b=link_to product_color.name, product_sizes_path(get_product_color_id: product_color.id)
+- else
+  %h1 Просмотр склада
+  #price_list
+    = render "price_list"

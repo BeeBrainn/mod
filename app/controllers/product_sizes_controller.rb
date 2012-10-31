@@ -33,6 +33,11 @@ class ProductSizesController < ApplicationController
       @current_product = Product.find_by_id(params[:product_id])
     end
 
+    if params[:get_product_color_id]
+      @product_sizes = ProductSize.where("product_color_id = ?", params[:get_product_color_id])
+      @product_color = ProductColor.find_by_id(params[:get_product_color_id])
+    end
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @product_sizes }
@@ -91,6 +96,12 @@ class ProductSizesController < ApplicationController
       @new_count = @product_size.count + params[:product_size][:count].to_i
       params.update(:product_size=>{:count => @new_count})
     end
+
+    if params[:product_size]
+      @product_color = ProductColor.find_by_id(@product_size.product_color_id)
+      @product_sizes = ProductSize.where("product_color_id = ?", @product_color.id)
+    end
+
     respond_to do |format|
       if @product_size.update_attributes(params[:product_size])
         format.html { redirect_to @product_size, notice: 'Product size was successfully updated.' }
