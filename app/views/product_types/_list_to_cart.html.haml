@@ -1,19 +1,17 @@
-.hide= product_color = @product_colors.first
-.hide= product_sizes = ProductSize.where("product_color_id = ?", product_color.id)
 %table.table_to_cart
   %tr 
-    %td{colspan: product_sizes.count} 
+    %td{colspan: @product_sizes.count} 
       Цвет:
-      =product_color.name
+      =@product_color.name
   = form_tag line_items_path, remote: true, method: :post  do
     %tr
-      - product_sizes.each do |product_size_to_cart|
+      - @product_sizes.each do |product_size_to_cart|
         %td
           = label_tag product_size_to_cart.id, product_size_to_cart.name
     %tr
-      - product_sizes.each do |product_size_to_cart|
+      - @product_sizes.each do |product_size_to_cart|
         %td  
           = text_field_tag "product_sizes[#{product_size_to_cart.id}]", "", size: "3"
     %tr 
-      %td{colspan: product_sizes.count} 
+      %td{colspan: @product_sizes.count} 
         = submit_tag "Добавить в корзину"

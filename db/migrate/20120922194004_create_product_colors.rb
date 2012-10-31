@@ -3,6 +3,7 @@ class CreateProductColors < ActiveRecord::Migration
     create_table :product_colors do |t|
       t.string :name
       t.string :desc
+      t.string :big_image_url
       t.references :product_type
 
       t.timestamps

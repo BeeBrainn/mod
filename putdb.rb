@@ -11,7 +11,7 @@ temp_product = Product.new
 temp_product.name = "Бейсболки"
 temp_product.save
 temp_product = Product.new
-temp_product.name = "Брюки"
+temp_product.name = "Толстовки"
 temp_product.save
 temp_product = Product.new
 temp_product.name = "Бюджетные футболки"

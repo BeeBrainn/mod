@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(:version => 20121018140430) do
   create_table "product_colors", :force => true do |t|
     t.string   "name"
     t.string   "desc"
+    t.string   "big_image_url"
     t.integer  "product_type_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
@@ -63,17 +64,20 @@ ActiveRecord::Schema.define(:version => 20121018140430) do
   create_table "product_types", :force => true do |t|
     t.string   "name"
     t.text     "desc"
+    t.string   "big_image_url"
+    t.string   "small_image_url"
     t.integer  "product_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   add_index "product_types", ["product_id"], :name => "index_product_types_on_product_id"
 
   create_table "products", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "small_image_url"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "unps", :force => true do |t|
