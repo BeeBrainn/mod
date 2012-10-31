@@ -1,24 +1,11 @@
-%h1 Listing product_types
-
-
-%table
-  %tr
-    %th Name
-    %th Desc
-    %th Product
-    %th
-    %th
-    %th
-
+- if @current_group.admin_flag
+  %h1 Редактирование элементов склада
+  %i=link_to "Назад", :back
+  %br
   - @product_types.each do |product_type|
-    %tr
-      %td= product_type.name
-      %td= product_type.desc
-      %td= product_type.product
-      %td= link_to 'Show', product_type
-      %td= link_to 'Edit', edit_product_type_path(product_type)
-      %td= link_to 'Destroy', product_type, :confirm => 'Are you sure?', :method => :delete
-
-%br
-
-= link_to 'New Product type', new_product_type_path
+    %td
+      %b=link_to product_type.name, product_colors_path(get_product_type_id: product_type.id)
+- else
+  %h1 Просмотр склада
+  #price_list
+    = render "price_list"

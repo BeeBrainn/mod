@@ -3,7 +3,7 @@ class ProductTypesController < ApplicationController
   # GET /product_types
   # GET /product_types.json
   def index
-    @product_types = ProductType.all
+    @product_types = ProductType.where("product_id = ?", params[:get_product_id])
 
     respond_to do |format|
       format.html # index.html.erb

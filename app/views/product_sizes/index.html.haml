@@ -1,25 +1,32 @@
-%h1 Поиск товара
+- if params[:get_product_color_id]
+  - if @current_group.admin_flag
+    %h1 Редактирование элементов склада
+    %i=link_to "Назад", :back
+    %br
+    #price_editor
+      =render "price_editor"
+- else
+  %h1 Поиск товара
+  = form_tag '/product_sizes', method: :get do
+    Товар:
+    = select_tag "product_id", options_from_collection_for_select(@products, "id", "name", @current_product.id), prompt: @current_product.name
+    Тип:
+    = select_tag "product_type_id", options_from_collection_for_select(@product_types, "id", "name", @current_product_type.id), prompt: @current_product_type.name
+    Цвет:
+    = select_tag "product_color_id", options_from_collection_for_select(@product_colors, "id", "name", @current_product_color.id), prompt: @current_product_color.name
+    
+  %hr{color:"green"}
 
-= form_tag '/product_sizes', method: :get do
-  Товар:
-  = select_tag "product_id", options_from_collection_for_select(@products, "id", "name", @current_product.id), prompt: @current_product.name
-  Тип:
-  = select_tag "product_type_id", options_from_collection_for_select(@product_types, "id", "name", @current_product_type.id), prompt: @current_product_type.name
-  Цвет:
-  = select_tag "product_color_id", options_from_collection_for_select(@product_colors, "id", "name", @current_product_color.id), prompt: @current_product_color.name
-  
-%hr{color:"green"}
-
-- if @product_sizes.first
-  %table.table_to_cart
-    %tr
-    - @product_sizes.each do |product_size|
-      %td
-        %b=product_size.name
-    %tr
-    - @product_sizes.each do |product_size|
-      %td
-        %input{size: 3}
-    %tr 
-      %td{colspan: @product_sizes.count} 
-        %button Добавить в корзину
+  - if @product_sizes.first
+    %table.table_to_cart
+      %tr
+      - @product_sizes.each do |product_size|
+        %td
+          %b=product_size.name
+      %tr
+      - @product_sizes.each do |product_size|
+        %td
+          %input{size: 3}
+      %tr 
+        %td{colspan: @product_sizes.count} 
+          %button Добавить в корзину

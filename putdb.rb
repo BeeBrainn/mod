@@ -21,7 +21,19 @@ temp_product.save
 @products.each do |product|
 	temp_product_type = ProductType.new
 	temp_product_type.product_id = product.id
-	temp_product_type.name = "Короткий рукав"
+	temp_product_type.name = "Короткий рукав1"
+	temp_product_type.save
+	temp_product_type = ProductType.new
+	temp_product_type.product_id = product.id
+	temp_product_type.name = "Короткий рукав2"
+	temp_product_type.save
+	temp_product_type = ProductType.new
+	temp_product_type.product_id = product.id
+	temp_product_type.name = "Короткий рукав3"
+	temp_product_type.save
+	temp_product_type = ProductType.new
+	temp_product_type.product_id = product.id
+	temp_product_type.name = "Короткий рукав4"
 	temp_product_type.save
 end
 @product_types = ProductType.all
@@ -29,6 +41,38 @@ end
 	temp_product_color = ProductColor.new
 	temp_product_color.product_type_id = product_type.id
 	temp_product_color.name = "Красный"
+	temp_product_color.save	
+	temp_product_color = ProductColor.new
+	temp_product_color.product_type_id = product_type.id
+	temp_product_color.name = "Красный1"
+	temp_product_color.save	
+	temp_product_color = ProductColor.new
+	temp_product_color.product_type_id = product_type.id
+	temp_product_color.name = "Красный2"
+	temp_product_color.save	
+	temp_product_color = ProductColor.new
+	temp_product_color.product_type_id = product_type.id
+	temp_product_color.name = "Красный3"
+	temp_product_color.save	
+	temp_product_color = ProductColor.new
+	temp_product_color.product_type_id = product_type.id
+	temp_product_color.name = "Красный4"
+	temp_product_color.save	
+	temp_product_color = ProductColor.new
+	temp_product_color.product_type_id = product_type.id
+	temp_product_color.name = "Красный5"
+	temp_product_color.save	
+	temp_product_color = ProductColor.new
+	temp_product_color.product_type_id = product_type.id
+	temp_product_color.name = "Красный6"
+	temp_product_color.save	
+	temp_product_color = ProductColor.new
+	temp_product_color.product_type_id = product_type.id
+	temp_product_color.name = "Красный7"
+	temp_product_color.save	
+	temp_product_color = ProductColor.new
+	temp_product_color.product_type_id = product_type.id
+	temp_product_color.name = "Красный8"
 	temp_product_color.save	
 end
 @product_colors =  ProductColor.all
