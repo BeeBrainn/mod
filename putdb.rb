@@ -3,7 +3,125 @@
 
 temp_product = Product.new
 temp_product.name = "Футболки"
+temp_product.small_image_url = "F1_small.png"				## I'M HERE WAITING!
 temp_product.save
+		temp_product_type = ProductType.new
+		temp_product_type.product_id = temp_product.id
+		temp_product_type.name = "Футболки жен. кор. рук. Круглый ворот 155гр. Хлопок 100%"
+		temp_product_type.desc = ""							## I'M HERE WAITING!
+	    temp_product_type.big_image_url = "F1.png"			## I'M HERE WAITING!
+	    temp_product_type.small_image_url = "F1_small.png"	## I'M HERE WAITING!
+		temp_product_type.save
+				temp_product_color = ProductColor.new
+				temp_product_color.product_type_id = temp_product_type.id
+				temp_product_color.name = "Белый"
+				temp_product_color.desc = "#eeeeee" 		## OR #FFFFFF
+		    	temp_product_color.big_image_url = ""		## I'M HERE WAITING!
+				temp_product_color.save
+						temp_product_size = ProductSize.new
+						temp_product_size.product_color_id = temp_product_color.id
+						temp_product_size.name = "S"
+						temp_product_size.number = 1
+						temp_product_size.price = 0
+						temp_product_size.count = 120
+						temp_product_size.reserv = 0
+						temp_product_size.save
+						temp_product_size = ProductSize.new
+						temp_product_size.product_color_id = temp_product_color.id
+						temp_product_size.name = "M"
+						temp_product_size.number = 1
+						temp_product_size.price = 0
+						temp_product_size.count = 100
+						temp_product_size.reserv = 0
+						temp_product_size.save
+						temp_product_size = ProductSize.new
+						temp_product_size.product_color_id = temp_product_color.id
+						temp_product_size.name = "L"
+						temp_product_size.number = 1
+						temp_product_size.price = 0
+						temp_product_size.count = 150
+						temp_product_size.reserv = 0
+						temp_product_size.save
+						temp_product_size = ProductSize.new
+						temp_product_size.product_color_id = temp_product_color.id
+						temp_product_size.name = "XL"
+						temp_product_size.number = 1
+						temp_product_size.price = 0
+						temp_product_size.count = 200
+						temp_product_size.reserv = 0
+						temp_product_size.save
+						temp_product_size = ProductSize.new
+						temp_product_size.product_color_id = temp_product_color.id
+						temp_product_size.name = "2XL"
+						temp_product_size.number = 1
+						temp_product_size.price = 0
+						temp_product_size.count = 240
+						temp_product_size.reserv = 0
+						temp_product_size.save
+						temp_product_size = ProductSize.new
+						temp_product_size.product_color_id = temp_product_color.id
+						temp_product_size.name = "3XL"
+						temp_product_size.number = 1
+						temp_product_size.price = 0
+						temp_product_size.count = 0
+						temp_product_size.reserv = 0
+						temp_product_size.save
+				temp_product_color = ProductColor.new
+				temp_product_color.product_type_id = temp_product_type.id
+				temp_product_color.name = "Светло голубой"
+				temp_product_color.desc = "#66ffff"
+		    	temp_product_color.big_image_url = ""		## I'M HERE WAITING!
+				temp_product_color.save
+						temp_product_size = ProductSize.new
+						temp_product_size.product_color_id = temp_product_color.id
+						temp_product_size.name = "S"
+						temp_product_size.number = 1
+						temp_product_size.price = 0
+						temp_product_size.count = 180
+						temp_product_size.reserv = 0
+						temp_product_size.save
+						temp_product_size = ProductSize.new
+						temp_product_size.product_color_id = temp_product_color.id
+						temp_product_size.name = "M"
+						temp_product_size.number = 1
+						temp_product_size.price = 0
+						temp_product_size.count = 180
+						temp_product_size.reserv = 0
+						temp_product_size.save
+						temp_product_size = ProductSize.new
+						temp_product_size.product_color_id = temp_product_color.id
+						temp_product_size.name = "L"
+						temp_product_size.number = 1
+						temp_product_size.price = 0
+						temp_product_size.count = 190
+						temp_product_size.reserv = 0
+						temp_product_size.save
+						temp_product_size = ProductSize.new
+						temp_product_size.product_color_id = temp_product_color.id
+						temp_product_size.name = "XL"
+						temp_product_size.number = 1
+						temp_product_size.price = 0
+						temp_product_size.count = 180
+						temp_product_size.reserv = 0
+						temp_product_size.save
+						temp_product_size = ProductSize.new
+						temp_product_size.product_color_id = temp_product_color.id
+						temp_product_size.name = "2XL"
+						temp_product_size.number = 1
+						temp_product_size.price = 0
+						temp_product_size.count = 160
+						temp_product_size.reserv = 0
+						temp_product_size.save
+						temp_product_size = ProductSize.new
+						temp_product_size.product_color_id = temp_product_color.id
+						temp_product_size.name = "3XL"
+						temp_product_size.number = 1
+						temp_product_size.price = 0
+						temp_product_size.count = 0
+						temp_product_size.reserv = 0
+						temp_product_size.save
+
+
 temp_product = Product.new
 temp_product.name = "Рубашки поло"
 temp_product.save
@@ -13,127 +131,7 @@ temp_product.save
 temp_product = Product.new
 temp_product.name = "Толстовки"
 temp_product.save
-temp_product = Product.new
-temp_product.name = "Бюджетные футболки"
-temp_product.save
 
-@products = Product.all
-@products.each do |product|
-	temp_product_type = ProductType.new
-	temp_product_type.product_id = product.id
-	temp_product_type.name = "Короткий рукав1"
-	temp_product_type.save
-	temp_product_type = ProductType.new
-	temp_product_type.product_id = product.id
-	temp_product_type.name = "Короткий рукав2"
-	temp_product_type.save
-	temp_product_type = ProductType.new
-	temp_product_type.product_id = product.id
-	temp_product_type.name = "Короткий рукав3"
-	temp_product_type.save
-	temp_product_type = ProductType.new
-	temp_product_type.product_id = product.id
-	temp_product_type.name = "Короткий рукав4"
-	temp_product_type.save
-end
-@product_types = ProductType.all
-@product_types.each do |product_type|
-	temp_product_color = ProductColor.new
-	temp_product_color.product_type_id = product_type.id
-	temp_product_color.name = "Красный"
-	temp_product_color.save	
-	temp_product_color = ProductColor.new
-	temp_product_color.product_type_id = product_type.id
-	temp_product_color.name = "Красный1"
-	temp_product_color.save	
-	temp_product_color = ProductColor.new
-	temp_product_color.product_type_id = product_type.id
-	temp_product_color.name = "Красный2"
-	temp_product_color.save	
-	temp_product_color = ProductColor.new
-	temp_product_color.product_type_id = product_type.id
-	temp_product_color.name = "Красный3"
-	temp_product_color.save	
-	temp_product_color = ProductColor.new
-	temp_product_color.product_type_id = product_type.id
-	temp_product_color.name = "Красный4"
-	temp_product_color.save	
-	temp_product_color = ProductColor.new
-	temp_product_color.product_type_id = product_type.id
-	temp_product_color.name = "Красный5"
-	temp_product_color.save	
-	temp_product_color = ProductColor.new
-	temp_product_color.product_type_id = product_type.id
-	temp_product_color.name = "Красный6"
-	temp_product_color.save	
-	temp_product_color = ProductColor.new
-	temp_product_color.product_type_id = product_type.id
-	temp_product_color.name = "Красный7"
-	temp_product_color.save	
-	temp_product_color = ProductColor.new
-	temp_product_color.product_type_id = product_type.id
-	temp_product_color.name = "Красный8"
-	temp_product_color.save	
-end
-@product_colors =  ProductColor.all
-@product_colors.each do |product_color|
-	temp_product_size = ProductSize.new
-	temp_product_size.product_color_id = product_color.id
-	temp_product_size.name = "XS"
-	temp_product_size.number = 0
-	temp_product_size.price = 0
-	temp_product_size.count = 0
-	temp_product_size.reserv = 0
-	temp_product_size.save
-	temp_product_size = ProductSize.new
-	temp_product_size.product_color_id = product_color.id
-	temp_product_size.name = "S"
-	temp_product_size.number = 1
-	temp_product_size.price = 0
-	temp_product_size.count = 0
-	temp_product_size.reserv = 0
-	temp_product_size.save
-	temp_product_size = ProductSize.new
-	temp_product_size.product_color_id = product_color.id
-	temp_product_size.name = "M"
-	temp_product_size.number = 2
-	temp_product_size.price = 0
-	temp_product_size.count = 0
-	temp_product_size.reserv = 0
-	temp_product_size.save
-	temp_product_size = ProductSize.new
-	temp_product_size.product_color_id = product_color.id
-	temp_product_size.name = "L"
-	temp_product_size.number = 3
-	temp_product_size.price = 0
-	temp_product_size.count = 0
-	temp_product_size.reserv = 0
-	temp_product_size.save
-	temp_product_size = ProductSize.new
-	temp_product_size.product_color_id = product_color.id
-	temp_product_size.name = "XL"
-	temp_product_size.number = 4
-	temp_product_size.price = 0
-	temp_product_size.count = 0
-	temp_product_size.reserv = 0
-	temp_product_size.save
-	temp_product_size = ProductSize.new
-	temp_product_size.product_color_id = product_color.id
-	temp_product_size.name = "2XL"
-	temp_product_size.number = 5
-	temp_product_size.price = 0
-	temp_product_size.count = 0
-	temp_product_size.reserv = 0
-	temp_product_size.save
-	temp_product_size = ProductSize.new
-	temp_product_size.product_color_id = product_color.id
-	temp_product_size.name = "3XL"
-	temp_product_size.number = 6
-	temp_product_size.price = 0
-	temp_product_size.count = 0
-	temp_product_size.reserv = 0
-	temp_product_size.save
-end
 temp_user_group = UserGroup.new
 temp_user_group.name = "user"
 temp_user_group.admin_flag = false

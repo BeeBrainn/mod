@@ -1,13 +1,13 @@
-- if @current_group.admin_flag
-  = render 'users/admin_form'
-  %br
-  %h1 Редактирование элементов склада
-  %i=link_to "Назад", :back
-  %br
-  - @product_colors.each do |product_color|
-    %td
-      %b=link_to product_color.name, product_sizes_path(get_product_color_id: product_color.id)
-- else
-  %h1 Просмотр склада
-  #price_list
-    = render "price_list"
+- if params[:get_product_type_id]
+  - if @current_group.admin_flag
+    = render 'users/admin_form'
+    %h1 Редактирование элементов склада
+    %i=link_to "Назад", :back
+    %br
+    - @product_colors.each do |product_color|
+      %td
+        %b=link_to product_color.name, product_sizes_path(get_product_color_id: product_color.id)
+  - else
+    %h1 Просмотр склада
+    #price_list
+      = render "price_list"

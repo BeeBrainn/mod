@@ -7,7 +7,7 @@
   #link_out_order_menu
     Закрыть
   - @product_colors.each do |product_color|
-    .link_to_order_menu_color
+    .link_to_order_menu_color{:style => "background-color: #{product_color.desc}"}
       =link_to product_color.name, product_type_path(get_product_color_id: product_color.id), remote: true
   .clear
   #list_to_cart  
