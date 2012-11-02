@@ -103,18 +103,24 @@ class ProductSizesController < ApplicationController
         end
 
       else
-        #if params[:common_color]
-         # @product_sizes.each do |product_size|
-          #  product_size.price = params[:product_size][:price]
-           # product_size.save
-          #end
-        #end
+      if params[:common_color]
+        product_colors = ProductColor.where("product_type_id = ?", @product_color.product_type_id)
+        product_colors.each do |product_color_temp|
+          product_color_temp.product_sizes.each do |product_size_temp|
+            if product_size_temp.name == @product_size.name
+              product_size_temp.price = params[:product_size][:price]
+              product_size_temp.save
+            end
+          end
+        end
+      else
         if params[:product_size][:count]
           @new_count = @product_size.count + params[:product_size][:count].to_i
           params.update(:product_size=>{:count => @new_count})
         end    
         @product_size.update_attributes(params[:product_size])
         @current_product_size_id = @product_size.id
+      end
       end
     end
     respond_to do |format|
