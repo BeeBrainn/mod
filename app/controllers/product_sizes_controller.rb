@@ -92,25 +92,35 @@ class ProductSizesController < ApplicationController
   def update
     @products = Product.all
     @product_size = ProductSize.find(params[:id])
-    if params[:product_size][:count]
-      @new_count = @product_size.count + params[:product_size][:count].to_i
-      params.update(:product_size=>{:count => @new_count})
-    end
 
     if params[:product_size]
       @product_color = ProductColor.find_by_id(@product_size.product_color_id)
       @product_sizes = ProductSize.where("product_color_id = ?", @product_color.id)
-    end
+      if params[:common_size]
+        @product_sizes.each do |product_size|
+          product_size.price = params[:product_size][:price]
+          product_size.save
+        end
 
-    respond_to do |format|
-      if @product_size.update_attributes(params[:product_size])
-        format.html { redirect_to @product_size, notice: 'Product size was successfully updated.' }
-        format.js { @current_product_size_id = @product_size.id}
-        format.json { head :no_content }
       else
-        format.html { render action: "edit" }
-        format.json { render json: @product_size.errors, status: :unprocessable_entity }
+        #if params[:common_color]
+         # @product_sizes.each do |product_size|
+          #  product_size.price = params[:product_size][:price]
+           # product_size.save
+          #end
+        #end
+        if params[:product_size][:count]
+          @new_count = @product_size.count + params[:product_size][:count].to_i
+          params.update(:product_size=>{:count => @new_count})
+        end    
+        @product_size.update_attributes(params[:product_size])
+        @current_product_size_id = @product_size.id
       end
+    end
+    respond_to do |format|
+      format.html { redirect_to @product_size, notice: 'Product size was successfully updated.' }
+      format.js { @current_product_size_id}
+      format.json { head :no_content }
     end
   end
 

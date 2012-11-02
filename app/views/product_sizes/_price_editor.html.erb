@@ -3,6 +3,7 @@
   </td><td>
   <table class="table_product_size">
   <tr>
+  <td></td>
   <% @product_sizes.each do |product_size| %>
     <% if @current_product_size_id && @current_product_size_id == product_size.id %>
       <td id="current_product_size"> 
@@ -11,9 +12,10 @@
     <% end %>
     <%= product_size.name %></td>
   <% end %>
-  <td>Все</td>
+  <td>Все размеры</td>
   </tr>
   <tr>
+  <td class="td_product_price">Цена</td>
   <% @product_sizes.each do |product_size| %>
     <td class="td_product_price">
       <div class="edit_product_price"> 
@@ -25,17 +27,28 @@
       </div>      
     </td>
   <% end %>
-  <td class="td_product_price"> inp </td>
+    <td class="td_product_price"> 
+      <div class="edit_product_price"> 
+        <%= form_for @product_sizes.first, remote: true do |f| %>
+          <%= f.hidden_field :product_color_id %>
+          <%= hidden_field_tag "common_size"%>
+          <%= f.text_field :price, size: "6" %>
+          <div class="hide"> <%= f.submit '  Save   ' %> </div>
+        <% end %>
+      </div>
+    </td>
   </tr>
   <tr>
+  <td class="td_product_count">Количество</td>
   <% @product_sizes.each do |product_size| %>
     <td class="td_product_count">
       <div class="static_product_count"><%= product_size.count %></div>
     </td>
   <% end %>
-  <td class="td_product_count"> - </td>
+  <td></td>
   </tr>
   <tr>
+  <td></td>
   <% @product_sizes.each do |product_size| %>
     <td class="td_product_count">
       <div class="edit_product_count">
@@ -47,13 +60,29 @@
       </div>
     </td>
   <% end %>
-  <td class="td_product_count"> inp1 </td>
+  <td></td>
   </tr>
   <tr>
+  <td class="td_product_reserv">Резерв</td>
   <% @product_sizes.each do |product_size| %>
     <td class="td_product_reserv"><%= product_size.reserv %></td>
   <% end %>
-  <td class="td_product_reserv"> - </td>
+  <td></td>
+  </tr>
+  <tr>
+  <td class="td_product_price_color">Все цвета</td>
+  <% @product_sizes.each do |product_size| %>
+    <td class="td_product_price_color"> 
+      <div class="edit_product_price_color"> 
+        <%= form_for product_size, remote: true do |f| %>
+          <%= f.hidden_field :product_color_id %>
+          <%= hidden_field_tag "common_color"%>
+          <%= f.text_field :price, size: "6" %>
+          <div class="hide"> <%= f.submit '  Save   ' %> </div>
+        <% end %>
+      </div>
+    </td>
+  <% end %>
   </tr>
   </table>
   </td>
