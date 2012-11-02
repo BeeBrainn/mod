@@ -8,10 +8,10 @@
             %li= msg
 
     .field
-      = f.hidden_field :organization_id
+      = f.hidden_field :user_id
     .field
-      = f.label "Организация:"
-      = f.text_field :organization
+      %p Организация:
+      = @current_user.company_name
     .field
       = f.label "Резерв"
       = f.check_box :reserv_flag
@@ -28,7 +28,7 @@
             %li= msg
 
     .field
-      = f.hidden_field :organization_id
+      = f.hidden_field :user_id
     .field
       = f.label "Ваше имя"
       = f.text_field :name

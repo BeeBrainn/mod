@@ -1,6 +1,6 @@
-﻿%h1 Пользователи
-= link_to 'New User', new_user_path
+﻿= render 'users/admin_form'
 %br
+%h1 Пользователи
 %br
 = form_tag '/users', method: :get do
   = select_tag :temp_id, options_for_select([['Зарегестрированные пользователи', 1], ['Ожидают регистрации', 2]], params[:temp_id])

@@ -21,20 +21,20 @@ ActiveRecord::Schema.define(:version => 20121030131314) do
   create_table "line_items", :force => true do |t|
     t.integer  "product_size_id"
     t.integer  "cart_id"
-    t.integer  "quantity",        :default => 1
+    t.integer  "quantity",        :default => 0
     t.integer  "order_id"
     t.datetime "created_at",                     :null => false
     t.datetime "updated_at",                     :null => false
   end
 
   create_table "orders", :force => true do |t|
-    t.integer  "organization_id", :default => 0
+    t.integer  "user_id",     :default => 0
     t.string   "name"
     t.string   "email"
     t.text     "details"
-    t.boolean  "reserv_flag",     :default => false
-    t.datetime "created_at",                         :null => false
-    t.datetime "updated_at",                         :null => false
+    t.boolean  "reserv_flag", :default => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
   end
 
   create_table "product_colors", :force => true do |t|

@@ -1,9 +1,6 @@
 %p#notice= notice
 
 %p
-  %b Organization:
-  = @order.organization
-%p
   %b Name:
   = @order.name
 %p
@@ -13,8 +10,10 @@
   %b Details:
   = @order.details
 %p
-  %b Reserv flag:
-  = @order.reserv_flag
+  - if @order.reserv_flag
+    %i Резерв
+
+= render "show_form"
 
 = link_to 'Edit', edit_order_path(@order)
 \|

@@ -3,6 +3,11 @@
   Личный кабинет
   =@user.name 
 %h6= link_to 'Редактировать', edit_user_path(@user)
+- if UserGroup.find_by_id(@user.user_group_id).admin_flag
+  = render 'admin_form'
+- else
+  = render 'userform'
+%hr{color: "green"}
 %table
   %tr
     %td email:
@@ -11,7 +16,4 @@
     %td Последний раз на сайте:
     %td= @user.last_in.in_time_zone('Minsk').strftime("%d.%m.%Y %H:%M")
 %hr{color: "green"}
-- if UserGroup.find_by_id(@user.user_group_id).admin_flag
-  = render 'admin_form'
-- else
-  = render 'userform'
+= render "form"

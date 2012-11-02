@@ -1,0 +1,25 @@
+- @products_in_order.each do |product_in_order|
+  = Product.find_by_id(product_in_order).name
+  %table
+    - @types_in_order.each do |type_in_order|
+      - if ProductType.find_by_id(type_in_order).product_id == product_in_order
+        %tr
+          %td= ProductType.find_by_id(type_in_order).name
+          %td
+            %table
+              - @colors_in_order.each do |color_in_order|
+                - if ProductColor.find_by_id(color_in_order).product_type_id == type_in_order
+                  %tr
+                    %td= ProductColor.find_by_id(color_in_order).name
+                    %td
+                      %table
+                        %tr
+                          - @line_items.each do |line_item|
+                            - if ProductSize.find_by_id(line_item.product_size_id).product_color_id == color_in_order
+                              %td
+                                = ProductSize.find_by_id(line_item.product_size_id).name
+                        %tr
+                          - @line_items.each do |line_item|
+                            - if ProductSize.find_by_id(line_item.product_size_id).product_color_id == color_in_order
+                              %td
+                                = line_item.quantity

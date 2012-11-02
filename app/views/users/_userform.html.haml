@@ -1,5 +1,4 @@
-= link_to 'Личная информация', '#'
+= link_to 'Личная информация', user_path(@current_user)
 = link_to 'Счета', '#'
-= link_to 'Последний заказ', '#'
+= link_to 'Последний заказ', orders_path
 = link_to 'Зарезервированная продукция', '#'
-= render 'form'

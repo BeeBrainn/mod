@@ -1,7 +1,7 @@
 class Order < ActiveRecord::Base
   belongs_to :organization
   has_many :line_items, dependent: :destroy
-  attr_accessible :details, :email, :name, :organization_id, :reserv_flag
+  attr_accessible :details, :email, :name, :user_id, :reserv_flag
   unless @current_user
   	self.validates :name, :email, presence: true
   end

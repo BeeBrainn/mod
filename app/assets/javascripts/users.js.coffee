@@ -14,18 +14,18 @@ $ -> #reload page when change option for sort
 
 $ ->
 	$("input")
-      .change(()-> 
-        filter = $(this).val();
-        if(filter)
-          $("tr.company_name").children("td:first:not(:Contains(" + filter + "))").parent().slideUp();
-          $("tr.company_name").children("td:first:Contains(" + filter + ")").parent().slideDown();
-        else
-          $("tr.company_name").slideDown();
-        return false;
-      )
+    .change(()-> 
+      filter = $(this).val();
+      if(filter)
+        $("tr.company_name").children("td:first:not(:Contains(" + filter + "))").parent().slideUp();
+        $("tr.company_name").children("td:first:Contains(" + filter + ")").parent().slideDown();
+      else
+        $("tr.company_name").slideDown();
+      return false;
+    )
     .keyup(()->
-        $(this).change();
-    );
+      $(this).change();
+  );
 
 $ ->
   $("#mail_duplicate").click(()->
